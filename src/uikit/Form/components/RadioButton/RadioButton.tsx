@@ -7,6 +7,7 @@ export const RadioButton:FC<IRadioButtonProps> = (props) => {
   return (
     <Form.Check
       type={'radio'}
+      disabled={false}
       {...props}
     />
   )

@@ -7,4 +7,5 @@ export interface IRadioButtonProps {
   value: string,
   onChange?: ChangeEventHandler<HTMLInputElement>,
   checked?: boolean,
+  disabled?: boolean,
 }
