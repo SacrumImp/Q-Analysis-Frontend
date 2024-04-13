@@ -1,0 +1,11 @@
+version: "3.8"
+
+services:
+  app:
+    container_name: qanalysisfrontend-c
+    image: qanalysisfrontend
+    build:
+      context: .
+    ports:
+      - 8080:30
+
