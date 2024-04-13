@@ -1,8 +1,14 @@
+import {
+  MouseEventHandler,
+  ReactNode
+} from "react";
+
 export enum EButtonVariants {
   primary = 'primary',
 }
 
 export interface IButtonProps {
   variant: EButtonVariants,
-  children?: React.ReactNode,
+  onClick?: MouseEventHandler<HTMLButtonElement>,
+  children?: ReactNode,
 }

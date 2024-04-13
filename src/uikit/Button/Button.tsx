@@ -11,6 +11,7 @@ export const Button:FC<IButtonProps> = (props) => {
 
   const {
     variant,
+    onClick,
     children,
   } = props
 
@@ -25,6 +26,7 @@ export const Button:FC<IButtonProps> = (props) => {
     <BootstrapButton
       variant={variant}
       className={CN}
+      onClick={onClick}
     >
       <Text type={ETextTypes.span} className='button__content'>
         {children}

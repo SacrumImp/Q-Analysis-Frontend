@@ -1,4 +1,4 @@
 export enum ERelationsTypes {
-  binary = 'binary',
+  binary = 'Binary',
   tba = '',
 }
