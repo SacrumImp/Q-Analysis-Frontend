@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const axiosInstance = axios.create({
-  baseURL: 'https://localhost:5001',//'http://77.37.180.248:54321',
+  baseURL: 'http://77.37.180.248:54321',
   timeout: 3000,
 });
 
