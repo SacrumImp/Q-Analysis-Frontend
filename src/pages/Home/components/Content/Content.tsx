@@ -11,8 +11,8 @@ export const Content = () => {
   return (
     <div className="content">
       <Accordion defaultActiveKey={[ EAccordionItems.table, EAccordionItems.method ]}>
-        <TableItem/>
         <MethodItem/>
+        <TableItem/>
       </Accordion>
     </div>
   )

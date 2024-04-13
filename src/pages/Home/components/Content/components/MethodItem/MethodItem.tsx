@@ -1,19 +1,40 @@
-import { Accordion } from "../../../../../../uikit";
+import {
+  Accordion, 
+  Form,
+} from "../../../../../../uikit";
 import { EAccordionItems } from "../../types";
+import { EMethods } from "./types";
+import { useMethodItem } from "./useMethodItem";
 
 export const MethodItem = () => {
+
+  const {
+    selectedValue,
+    handleMethodChange,
+  } = useMethodItem()
 
   return (
     <Accordion.Item eventKey={EAccordionItems.method}>
       <Accordion.Header>Method switch</Accordion.Header>
       <Accordion.Body>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-        minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-        aliquip ex ea commodo consequat. Duis aute irure dolor in
-        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-        culpa qui officia deserunt mollit anim id est laborum.
+        <Form>
+          <Form.RadioButton
+            id='method-switch-casti'
+            label='Casti'
+            name='method-switch'
+            value={EMethods.Casti}
+            onChange={handleMethodChange}
+            checked={selectedValue === EMethods.Casti}
+          />
+          <Form.RadioButton
+            id='method-switch-duckstein'
+            label='Duckstein'
+            name='method-switch'
+            value={EMethods.Duckstein}
+            onChange={handleMethodChange}
+            checked={selectedValue === EMethods.Duckstein}
+          />
+        </Form>
       </Accordion.Body>      
     </Accordion.Item>
   )
