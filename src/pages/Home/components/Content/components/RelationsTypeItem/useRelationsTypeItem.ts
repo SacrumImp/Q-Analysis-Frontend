@@ -1,20 +1,19 @@
 import {
   ChangeEvent,
-  useState,
 } from "react";
-import { ERelationTypes } from "./types";
+import { ERelationsTypes } from "./types";
+import { useStoreContext } from "../../../../../../stores";
 
 export const useRelationsTypeItem = () => {
 
-  const [selectedValue, setSelectedValue] = useState<string>(ERelationTypes.binary);
+  const { calculationsFormStore } = useStoreContext()
 
   const handleRelationTypeChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setSelectedValue(event.target.value);
-    console.log(event.target.value)
+    calculationsFormStore.setRelationsType(event.target.value as ERelationsTypes);
   };
 
   return {
-    selectedValue,
+    selectedValue: calculationsFormStore.relationsType,
     handleRelationTypeChange,
   }
 

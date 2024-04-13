@@ -1,3 +1,4 @@
+import { observer } from "mobx-react";
 import {
   Accordion, 
   Form,
@@ -6,7 +7,7 @@ import { EAccordionItems } from "../../types";
 import { EMethods } from "./types";
 import { useMethodItem } from "./useMethodItem";
 
-export const MethodItem = () => {
+export const MethodItem = observer(() => {
 
   const {
     selectedValue,
@@ -38,4 +39,4 @@ export const MethodItem = () => {
       </Accordion.Body>      
     </Accordion.Item>
   )
-}
+})

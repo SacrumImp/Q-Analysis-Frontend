@@ -1,12 +1,13 @@
+import { observer } from "mobx-react";
 import {
   Accordion, 
   Form,
 } from "../../../../../../uikit";
 import { EAccordionItems } from "../../types";
-import { ERelationTypes } from "./types";
+import { ERelationsTypes } from "./types";
 import { useRelationsTypeItem } from "./useRelationsTypeItem";
 
-export const RelationsTypeItem = () => {
+export const RelationsTypeItem = observer(() => {
 
   const {
     selectedValue,
@@ -22,17 +23,17 @@ export const RelationsTypeItem = () => {
             id='relation-type'
             label='Binary'
             name='relation-type-switch'
-            value={ERelationTypes.binary}
+            value={ERelationsTypes.binary}
             onChange={handleRelationTypeChange}
-            checked={selectedValue === ERelationTypes.binary}
+            checked={selectedValue === ERelationsTypes.binary}
           />
           <Form.RadioButton
             id='method-switch-duckstein'
             label='tba'
             name='relation-type-switch'
-            value={''}
+            value={ERelationsTypes.tba}
             onChange={handleRelationTypeChange}
-            checked={selectedValue === ''}
+            checked={selectedValue === ERelationsTypes.tba}
             disabled
           />
         </Form>
@@ -40,4 +41,4 @@ export const RelationsTypeItem = () => {
     </Accordion.Item>
   )
 
-}
+})

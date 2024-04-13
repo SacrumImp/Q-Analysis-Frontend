@@ -1,3 +1,4 @@
-export enum ERelationTypes {
+export enum ERelationsTypes {
   binary = 'binary',
+  tba = '',
 }

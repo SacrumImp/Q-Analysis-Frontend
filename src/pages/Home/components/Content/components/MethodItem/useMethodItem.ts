@@ -1,20 +1,19 @@
 import {
   ChangeEvent,
-  useState
 } from "react";
 import { EMethods } from "./types";
+import { useStoreContext } from "../../../../../../stores";
 
 export const useMethodItem = () => {
 
-  const [selectedValue, setSelectedValue] = useState<string>(EMethods.Casti);
+  const { calculationsFormStore } = useStoreContext()
 
   const handleMethodChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setSelectedValue(event.target.value);
-    console.log(event.target.value)
+    calculationsFormStore.setMethod(event.target.value as EMethods);
   };
 
   return {
-    selectedValue,
+    selectedValue: calculationsFormStore.method,
     handleMethodChange,
   }
 
