@@ -4,3 +4,7 @@ export {
 } from "./Text";
 export { Accordion } from "./Accordion";
 export { Form } from "./Form";
+export {
+  Button,
+  EButtonVariants,
+} from "./Button";

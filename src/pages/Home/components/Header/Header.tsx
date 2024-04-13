@@ -9,7 +9,7 @@ export const Header = () => {
   return (
     <header className="header">
       <Text
-        type={ETextTypes.H1}
+        type={ETextTypes.h1}
         className="header__text-title"
       >
         Q-Analysis

@@ -1,7 +1,7 @@
 import { ChangeEventHandler } from "react";
 
 export interface IRadioButtonProps {
-  label: string,
+  label: React.ReactNode,
   id: string,
   name: string,
   value: string,

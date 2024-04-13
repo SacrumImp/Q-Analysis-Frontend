@@ -1,0 +1,18 @@
+@import '/src/variables/colors.scss';
+
+.button {
+
+  &__primary {
+    background-color: $button-primary-color;
+    border-color: $button-primary-color;
+
+    &:hover {
+      background-color: $button-primary-color-active;
+    }
+  }
+
+  &__content {
+    color: $button-text;
+  }
+
+}

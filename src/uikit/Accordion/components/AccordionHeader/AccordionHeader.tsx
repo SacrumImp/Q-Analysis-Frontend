@@ -11,7 +11,7 @@ export const AccordionHeader:FC<IAccordionHeaderProps> = (props) => {
 
   return (
     <BootstrapAccordion.Header>
-      <Text type={ETextTypes.H2}>
+      <Text type={ETextTypes.h2}>
         {children}
       </Text>
     </BootstrapAccordion.Header>

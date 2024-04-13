@@ -1,5 +1,6 @@
 export enum EAccordionItems {
-  table = "table",
-  method = "method",
-  relationType = "relationType",
+  table = 'table',
+  method = 'method',
+  relationType = 'relationType',
+  results = 'results',
 }

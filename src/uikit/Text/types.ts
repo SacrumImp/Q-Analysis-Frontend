@@ -1,6 +1,7 @@
 export enum ETextTypes {
-  H1 = "h1",
-  H2 = "h2",
+  h1 = 'h1',
+  h2 = 'h2',
+  span = 'span',
 }
 
 export interface ITextParams {
