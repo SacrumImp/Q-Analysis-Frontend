@@ -21,6 +21,14 @@ export const Text:FC<ITextParams> = (props) => {
           {children}
         </h1>
       )
+    case ETextTypes.H2:
+      return (
+        <h2 
+          className={`text text__H2 ${className}`}
+        >
+          {children}
+        </h2>
+      )
     default:
       return (
         <p
