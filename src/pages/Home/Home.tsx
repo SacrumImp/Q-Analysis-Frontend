@@ -1,9 +1,15 @@
-import { Header } from "./components";
+import {
+  Header,
+  Content,
+} from "./components";
 
 export const Home = () => {
 
   return (
-    <Header />
+    <div>
+      <Header />
+      <Content/>
+    </div>
   )
 
 }
