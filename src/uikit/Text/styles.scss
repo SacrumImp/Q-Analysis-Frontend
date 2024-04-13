@@ -1,0 +1,13 @@
+@import '/src/variables/colors.scss';
+
+.text {
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  color: $primary-text;
+
+  &__H1 {
+    font-size: 6em;
+    text-align: center;
+  }
+
+}
