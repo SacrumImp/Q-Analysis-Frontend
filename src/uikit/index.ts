@@ -8,3 +8,6 @@ export {
   Button,
   EButtonVariants,
 } from "./Button";
+export {
+  Table
+} from "./Table";
