@@ -13,6 +13,7 @@ export const InputCell:FC<IInputCellProps> = (props) => {
 
   return (
     <input
+      type="number"
       value={value}
       onChange={onChange}
       onBlur={onBlur}
