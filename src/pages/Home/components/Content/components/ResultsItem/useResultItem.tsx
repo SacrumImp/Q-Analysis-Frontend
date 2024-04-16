@@ -11,7 +11,8 @@ import { IAnalysisResult } from "../../../../../../api/adapters/types";
 export const useResultItem = () => {
 
   const { calculationsFormStore } = useStoreContext()
-  const [result, setResult] = useState<IAnalysisResult>()
+  const [result, setResult] = useState<IAnalysisResult | null>()
+  const [err, setErr] = useState('')
 
   const onClick = async () => {
     const structureParams = prepareStructure({
@@ -19,13 +20,21 @@ export const useResultItem = () => {
       relationsType: calculationsFormStore.relationsType, 
       relations: calculationsFormStore.data,
     })
-    const { data } = await axiosInstance.post(EApiRoutes.analysis, structureParams)
-    setResult(parseAnalysisResult(data))
+    try {
+      const { data } = await axiosInstance.post(EApiRoutes.analysis, structureParams)
+      setResult(parseAnalysisResult(data))
+      setErr('')
+    }
+    catch {
+      setErr('Unexpected error')
+      setResult(null)
+    }
   }
   
   return {
     onClick,
     result,
+    err,
   }
 
 }

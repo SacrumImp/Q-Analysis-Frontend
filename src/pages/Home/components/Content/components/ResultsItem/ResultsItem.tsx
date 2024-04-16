@@ -11,6 +11,7 @@ export const ResultsItem = observer(() => {
  
   const {
     result,
+    err,
     onClick,
   } = useResultItem()
 
@@ -33,6 +34,14 @@ export const ResultsItem = observer(() => {
           </>
           :
           null
+        }
+        {
+          err ?
+            <Text>
+              <b>{err}</b> 
+            </Text>
+            :
+            null
         }
         <Button
           variant='primary'
