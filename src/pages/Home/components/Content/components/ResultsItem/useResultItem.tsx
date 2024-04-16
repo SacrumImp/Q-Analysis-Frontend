@@ -8,84 +8,6 @@ import {
 import { useStoreContext } from "../../../../../../stores";
 import { IAnalysisResult } from "../../../../../../api/adapters/types";
 
-const mockRelations = [
-  [
-    0, 0, 1, 0, 0, 0,
-    1, 0, 0, 1, 0, 0,
-    0, 0, 0
-  ],
-  [
-    0, 0, 0, 0, 0, 0,
-    1, 0, 0, 0, 0, 0,
-    0, 0, 0
-  ],
-  [
-    0, 0, 0, 0, 0, 0,
-    1, 0, 0, 0, 0, 0,
-    0, 0, 0
-  ],
-  [
-    0, 1, 0, 0, 1, 1,
-    0, 1, 0, 1, 1, 0,
-    0, 0, 0
-  ],
-  [
-    0, 0, 0, 0, 0, 1,
-    0, 0, 0, 0, 0, 0,
-    1, 0, 0
-  ],
-  [
-    0, 0, 0, 0, 0, 0,
-    1, 0, 0, 0, 0, 0,
-    0, 0, 0
-  ],
-  [
-    0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0,
-    0, 0, 0
-  ],
-  [
-    0, 0, 0, 0, 0, 0,
-    1, 0, 0, 0, 0, 0,
-    0, 0, 0
-  ],
-  [
-    0, 1, 0, 0, 0, 1,
-    0, 0, 0, 0, 0, 0,
-    0, 0, 0
-  ],
-  [
-    0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0,
-    0, 0, 0
-  ],
-  [
-    0, 0, 0, 0, 0, 1,
-    0, 0, 0, 0, 0, 0,
-    0, 0, 0
-  ],
-  [
-    0, 0, 0, 0, 0, 1,
-    0, 0, 0, 1, 0, 0,
-    0, 0, 0
-  ],
-  [
-    0, 0, 0, 0, 0, 1,
-    0, 0, 0, 0, 0, 0,
-    0, 0, 0
-  ],
-  [
-    0, 1, 0, 0, 0, 0,
-    0, 0, 0, 1, 0, 0,
-    0, 0, 0
-  ],
-  [
-    0, 0, 1, 0, 0, 0,
-    0, 1, 0, 1, 0, 1,
-    0, 0, 0
-  ]
-] 
-
 export const useResultItem = () => {
 
   const { calculationsFormStore } = useStoreContext()
@@ -95,7 +17,7 @@ export const useResultItem = () => {
     const structureParams = prepareStructure({
       method: calculationsFormStore.method,
       relationsType: calculationsFormStore.relationsType, 
-      relations: mockRelations,
+      relations: calculationsFormStore.data,
     })
     const { data } = await axiosInstance.post(EApiRoutes.analysis, structureParams)
     setResult(parseAnalysisResult(data))

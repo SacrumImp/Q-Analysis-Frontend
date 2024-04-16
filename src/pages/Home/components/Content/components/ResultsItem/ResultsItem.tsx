@@ -2,7 +2,6 @@ import { observer } from "mobx-react";
 import {
   Accordion,
   Button,
-  EButtonVariants,
   Text,
 } from "../../../../../../uikit";
 import { EAccordionItems } from "../../types";
@@ -33,7 +32,7 @@ export const ResultsItem = observer(() => {
           null
         }
         <Button
-          variant={EButtonVariants.primary}
+          variant='primary'
           onClick={onClick}
         >
           Perform calculations

@@ -26,10 +26,10 @@ export const prepareStructure = (params: IPrepareStructureParams): IAnalysisStru
       Relations: []
     }
 
-    for (let j = 0; j < relations.length; j++ ) {
+    for (let j = 1; j <= relations.length; j++ ) {
       const relation: IRelation = {
         $type: relationsType,
-        Value: relations[i][j] === 1
+        Value: relations[i][j] > 0
       }
       simplex.Relations.push(relation)
     }

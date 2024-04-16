@@ -6,8 +6,11 @@ export { Accordion } from "./Accordion";
 export { Form } from "./Form";
 export {
   Button,
-  EButtonVariants,
+  type TButtonVariants,
 } from "./Button";
 export {
-  Table
+  Table,
 } from "./Table";
+export {
+  ButtonGroup,
+} from "./ButtonGroup";

@@ -1,2 +1,2 @@
 export { Button } from "./Button";
-export { EButtonVariants } from "./types";
+export type { TButtonVariants } from "./types";

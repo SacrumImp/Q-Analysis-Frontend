@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Button as BootstrapButton } from 'react-bootstrap';
-import { EButtonVariants, IButtonProps } from './types';
+import { TButtonVariants, IButtonProps } from './types';
 import {
   ETextTypes,
   Text,
@@ -18,7 +18,7 @@ export const Button:FC<IButtonProps> = (props) => {
   let CN = ''
 
   switch (variant) {
-    case EButtonVariants.primary:
+    case 'primary':
       CN = 'button__primary'
   }
 
