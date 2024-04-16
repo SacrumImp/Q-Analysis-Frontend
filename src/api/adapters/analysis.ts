@@ -5,6 +5,8 @@ import {
   IRelation,
   IAnalysisResultData,
   IAnalysisResult,
+  IEccentricitiesData,
+  IEccentricities,
 } from "./types";
 
 export const prepareStructure = (params: IPrepareStructureParams): IAnalysisStructure => {
@@ -41,9 +43,18 @@ export const prepareStructure = (params: IPrepareStructureParams): IAnalysisStru
 
 }
 
+export const parseEccentricities = (data: IEccentricitiesData): IEccentricities => {
+  return {
+    simplexIndex: data.simplexIndex,
+    value: data.value,
+    isTotallyDisconnected: data.isTotallyDisconnected,
+  }
+}
+
 export const parseAnalysisResult = (data: IAnalysisResultData): IAnalysisResult => {
   return {
     dimension: data.dimension,
     vectorElements: data.vectorElements,
+    eccentricities: data.eccentricities.map(parseEccentricities)
   }
 }

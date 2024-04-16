@@ -27,6 +27,9 @@ export const ResultsItem = observer(() => {
             <Text>
               <b>Vector:</b> {result.vectorElements}
             </Text>
+            <Text>
+              <b>Eccentricities:</b> {JSON.stringify(result.eccentricities)}
+            </Text>
           </>
           :
           null
