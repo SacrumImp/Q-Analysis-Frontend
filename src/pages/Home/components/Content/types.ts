@@ -3,4 +3,5 @@ export enum EAccordionItems {
   method = 'method',
   relationType = 'relationType',
   results = 'results',
+  additionalParams = 'additionalParams'
 }

@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Accordion as BootstrapAccordion } from 'react-bootstrap';
 import { IAccordionHeaderProps } from './types';
-import { ETextTypes, Text } from "../../../../uikit";
+import { Text } from "../../../../uikit";
 
 export const AccordionHeader:FC<IAccordionHeaderProps> = (props) => {
 
@@ -11,7 +11,7 @@ export const AccordionHeader:FC<IAccordionHeaderProps> = (props) => {
 
   return (
     <BootstrapAccordion.Header>
-      <Text type={ETextTypes.h2}>
+      <Text type='h2'>
         {children}
       </Text>
     </BootstrapAccordion.Header>

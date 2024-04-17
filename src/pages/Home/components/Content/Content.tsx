@@ -1,5 +1,6 @@
 import { Accordion } from "../../../../uikit";
 import {
+  AdditionalParamsItem,
   MethodItem,
   RelationsTypeItem,
   TableItem,
@@ -12,9 +13,10 @@ export const Content = () => {
 
   return (
     <div className="content">
-      <Accordion defaultActiveKey={[ EAccordionItems.table, EAccordionItems.method, EAccordionItems.relationType, EAccordionItems.results]}>
+      <Accordion defaultActiveKey={[ EAccordionItems.table, EAccordionItems.method, EAccordionItems.relationType, EAccordionItems.results, EAccordionItems.additionalParams]}>
         <MethodItem/>
         <RelationsTypeItem/>
+        <AdditionalParamsItem/>
         <TableItem/>
         <ResultsItem/>
       </Accordion>

@@ -18,6 +18,8 @@ class CalculationsFormStore {
   private _data: Array<TData> = defaultData
   private _lastIndex: number = 1
 
+  private _sliceValue: number = 0 
+
   constructor() {
     makeAutoObservable(this);
   }
@@ -40,6 +42,10 @@ class CalculationsFormStore {
 
   get lastIndex(): number {
     return this._lastIndex
+  }
+
+  get sliceValue(): number {
+    return this._sliceValue
   }
 
   setMethod = (value: EMethods) => {
@@ -72,6 +78,10 @@ class CalculationsFormStore {
 
   updateElement = (rowId: number, columnId: string, value: number) => {
     this._data[rowId][parseInt(columnId)] = value
+  }
+
+  setSliceValue = (value: number) => {
+    this._sliceValue = value
   }
 
 }

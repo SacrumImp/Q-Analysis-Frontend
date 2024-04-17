@@ -19,7 +19,7 @@ export const useResultItem = () => {
       method: calculationsFormStore.method,
       relationsInfo: {
         relationsType: calculationsFormStore.relationsType,
-        additionalParam: 3,
+        additionalParam: calculationsFormStore.sliceValue,
       },
       relations: calculationsFormStore.data,
     })

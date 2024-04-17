@@ -1,6 +1,5 @@
 import {
-  Text, 
-  ETextTypes,
+  Text,
 } from "../../../../uikit";
 import "./styles.scss";
 
@@ -9,7 +8,7 @@ export const Header = () => {
   return (
     <header className="header">
       <Text
-        type={ETextTypes.h1}
+        type="h1"
         className="header__text-title"
       >
         Q-Analysis

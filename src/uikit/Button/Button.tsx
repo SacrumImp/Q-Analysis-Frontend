@@ -2,7 +2,6 @@ import { FC } from 'react';
 import { Button as BootstrapButton } from 'react-bootstrap';
 import { TButtonVariants, IButtonProps } from './types';
 import {
-  ETextTypes,
   Text,
 } from '../../uikit';
 import "./styles.scss";
@@ -28,7 +27,7 @@ export const Button:FC<IButtonProps> = (props) => {
       className={CN}
       onClick={onClick}
     >
-      <Text type={ETextTypes.span} className='button__content'>
+      <Text type='span' className='button__content'>
         {children}
       </Text>
     </BootstrapButton>

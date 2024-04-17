@@ -4,8 +4,10 @@ export enum ETextTypes {
   span = 'span',
 }
 
+export type TTextTypes = 'h1' | 'h2' | 'span'
+
 export interface ITextParams {
-  type?: ETextTypes,
+  type?: TTextTypes,
   className?: string,
   children: React.ReactNode,
 }
