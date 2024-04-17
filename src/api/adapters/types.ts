@@ -1,9 +1,14 @@
 import { EMethods } from "../../pages/Home/components/Content/components/MethodItem/types";
 import { ERelationsTypes } from "../../pages/Home/components/Content/components/RelationsTypeItem/types";
 
+export interface IRelationsInfo {
+  relationsType: ERelationsTypes,
+  additionalParam?: number,
+}
+
 export interface IPrepareStructureParams {
   method: EMethods,
-  relationsType: ERelationsTypes,
+  relationsInfo: IRelationsInfo,
   relations: Array<Array<number>>,
 }
 
@@ -12,16 +17,22 @@ export interface IAnalysisStructure {
   Simplices: Array<ISimplex>
 }
 
+export type TRelation = IBinaryRelation | IWeightedRelation
+
 export interface ISimplex {
   Index: number,
-  Relations: Array<IRelation>,
+  Relations: Array<TRelation>,
 }
 
-export type TRelatonValue = boolean
-
-export interface IRelation {
+export interface IBinaryRelation {
   $type: string,
-  Value: TRelatonValue,
+  Value: boolean,
+}
+
+export interface IWeightedRelation {
+  $type: string,
+  Value: number,
+  SliceValue: number
 }
 
 export interface IEccentricitiesData {

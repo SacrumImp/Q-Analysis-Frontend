@@ -28,6 +28,14 @@ export const RelationsTypeItem = observer(() => {
             checked={selectedValue === ERelationsTypes.binary}
           />
           <Form.RadioButton
+            id='relation-type'
+            label='Weighted'
+            name='relation-type-switch'
+            value={ERelationsTypes.weighted}
+            onChange={handleRelationTypeChange}
+            checked={selectedValue === ERelationsTypes.weighted}
+          />
+          <Form.RadioButton
             id='method-switch-duckstein'
             label='tba'
             name='relation-type-switch'

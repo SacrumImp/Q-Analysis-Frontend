@@ -17,7 +17,10 @@ export const useResultItem = () => {
   const onClick = async () => {
     const structureParams = prepareStructure({
       method: calculationsFormStore.method,
-      relationsType: calculationsFormStore.relationsType, 
+      relationsInfo: {
+        relationsType: calculationsFormStore.relationsType,
+        additionalParam: 3,
+      },
       relations: calculationsFormStore.data,
     })
     try {
