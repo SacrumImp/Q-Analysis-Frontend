@@ -16,12 +16,12 @@ export const RelationsTypeItem = observer(() => {
 
   return (
     <Accordion.Item eventKey={EAccordionItems.relationType}>
-      <Accordion.Header>Relations type switch</Accordion.Header>
+      <Accordion.Header>Type of system's model selector</Accordion.Header>
       <Accordion.Body>
         <Form>
           <Form.RadioButton
             id='relation-type'
-            label='Binary'
+            label='Binary case'
             name='relation-type-switch'
             value={ERelationsTypes.binary}
             onChange={handleRelationTypeChange}
@@ -29,7 +29,7 @@ export const RelationsTypeItem = observer(() => {
           />
           <Form.RadioButton
             id='relation-type'
-            label='Weighted'
+            label='Weighted (real-valued) case'
             name='relation-type-switch'
             value={ERelationsTypes.weighted}
             onChange={handleRelationTypeChange}

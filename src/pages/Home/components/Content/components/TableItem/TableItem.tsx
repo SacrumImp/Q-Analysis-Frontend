@@ -21,7 +21,7 @@ export const TableItem = observer(() => {
 
   return (
     <Accordion.Item eventKey={EAccordionItems.table}>
-      <Accordion.Header>Relations Table</Accordion.Header>
+      <Accordion.Header>System's model (matrix form)</Accordion.Header>
       <Accordion.Body>
         <ButtonGroup
           className="table__buttons"

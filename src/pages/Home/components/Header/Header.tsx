@@ -16,7 +16,7 @@ export const Header = () => {
       <Text
         className="header__text-sub-title"
       >
-        Mathematical method for estimating the complexity of a system
+        Mathematical method for estimating structural complexity of a system's model
       </Text>
     </header>
   )

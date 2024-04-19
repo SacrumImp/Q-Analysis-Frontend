@@ -16,12 +16,12 @@ export const MethodItem = observer(() => {
 
   return (
     <Accordion.Item eventKey={EAccordionItems.method}>
-      <Accordion.Header>Method switch</Accordion.Header>
+      <Accordion.Header>Eccentricity calculation approach selector</Accordion.Header>
       <Accordion.Body>
         <Form>
           <Form.RadioButton
             id='method-switch-casti'
-            label='Casti'
+            label='following J.Casti'
             name='method-switch'
             value={EMethods.Casti}
             onChange={handleMethodChange}
@@ -29,7 +29,7 @@ export const MethodItem = observer(() => {
           />
           <Form.RadioButton
             id='method-switch-duckstein'
-            label='Duckstein'
+            label='following L.Duckstein'
             name='method-switch'
             value={EMethods.Duckstein}
             onChange={handleMethodChange}
