@@ -26,8 +26,8 @@ export const TableItem = observer(() => {
         <ButtonGroup
           className="table__buttons"
         >
-          <AddElementButton />
-          <ClearElementsButton />
+          <AddElementButton/>
+          <ClearElementsButton/>
         </ButtonGroup>
         <EditableTable 
           data={data}

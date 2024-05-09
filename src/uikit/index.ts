@@ -14,3 +14,4 @@ export {
 export {
   ButtonGroup,
 } from "./ButtonGroup";
+export { Spinner } from "./Spinner";

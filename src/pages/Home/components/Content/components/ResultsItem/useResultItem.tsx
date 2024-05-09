@@ -10,11 +10,16 @@ import { IAnalysisResult } from "../../../../../../api/adapters/types";
 
 export const useResultItem = () => {
 
-  const { calculationsFormStore } = useStoreContext()
+  const {
+    calculationsFormStore,
+    resultsStore,
+  } = useStoreContext()
   const [result, setResult] = useState<IAnalysisResult | null>()
   const [err, setErr] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
 
   const onClick = async () => {
+    setIsLoading(true)
     const structureParams = prepareStructure({
       method: calculationsFormStore.method,
       relationsInfo: {
@@ -25,12 +30,20 @@ export const useResultItem = () => {
     })
     try {
       const { data } = await axiosInstance.post(EApiRoutes.analysis, structureParams)
-      setResult(parseAnalysisResult(data))
+      const result = parseAnalysisResult(data)
+      setResult(result)
       setErr('')
+      resultsStore.addResult({
+        systemStructure: structureParams,
+        calculationResults: result,
+      })
     }
     catch {
       setErr('Unexpected error')
       setResult(null)
+    }
+    finally {
+      setIsLoading(false)
     }
   }
   
@@ -38,6 +51,7 @@ export const useResultItem = () => {
     onClick,
     result,
     err,
+    isLoading,
   }
 
 }

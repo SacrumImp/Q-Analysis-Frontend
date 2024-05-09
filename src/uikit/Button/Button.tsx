@@ -12,6 +12,7 @@ export const Button:FC<IButtonProps> = (props) => {
     variant,
     onClick,
     children,
+    disabled = false,
   } = props
 
   let CN = ''
@@ -26,6 +27,7 @@ export const Button:FC<IButtonProps> = (props) => {
       variant={variant}
       className={CN}
       onClick={onClick}
+      disabled={disabled}
     >
       <Text type='span' className='button__content'>
         {children}
