@@ -1,9 +1,9 @@
 import {
   TColumn,
-  TData,
+  TRow,
 } from "../../../../../../../../utils/types";
 
 export interface IEditableTable {
-  data: Array<TData>,
+  data: Array<TRow>,
   columns: Array<TColumn>,
 }

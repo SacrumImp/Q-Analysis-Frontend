@@ -3,7 +3,7 @@ import {
   ReactNode,
 } from "react";
 
-export type TButtonVariants = 'primary';
+export type TButtonVariants = "primary" | "secondary";
 
 export interface IButtonProps {
   variant: TButtonVariants,

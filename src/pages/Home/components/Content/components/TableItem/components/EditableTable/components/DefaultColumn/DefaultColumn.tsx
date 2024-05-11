@@ -1,6 +1,9 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { useEffect, useState } from "react";
-import { TData } from "../../../../../../../../../../utils/types";
+import {
+  useEffect,
+  useState,
+} from "react";
+import { TRow } from "../../../../../../../../../../utils/types";
 import {
   ColumnDef,
   RowData,
@@ -13,7 +16,7 @@ declare module '@tanstack/react-table' {
   }
 }
 
-export const defaultColumn: Partial<ColumnDef<TData>> = {
+export const defaultColumn: Partial<ColumnDef<TRow>> = {
   cell: ({ getValue, row: { index }, column: { id }, table }) => {
     const initialValue = getValue();
     const [value, setValue] = useState(initialValue);

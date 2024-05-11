@@ -4,8 +4,9 @@ import {
   IAnalysisStructure,
 } from "../api/adapters/types";
 
-export type TColumn = ColumnDef<TData, number>;
-export type TData = Array<number>
+export type TColumn = ColumnDef<TRow, TData>;
+export type TRow = Array<TData>
+export type TData = boolean | number
 
 export interface IExportCalculations {
   systemStructure: IAnalysisStructure,

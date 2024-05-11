@@ -36,14 +36,14 @@ export const prepareStructure = (params: IPrepareStructureParams): IAnalysisStru
         case ERelationsTypes.binary:
           const binaryRelation: IBinaryRelation = {
             $type: relationsInfo.relationsType,
-            Value: relations[i][j] > 0
+            Value: relations[i][j] as boolean
           }
           simplex.Relations.push(binaryRelation)
           break;
         case ERelationsTypes.weighted:
           const weightedRelation: IWeightedRelation = {
             $type: relationsInfo.relationsType,
-            Value: relations[i][j],
+            Value: relations[i][j] as number,
             SliceValue: relationsInfo.additionalParam || 0,
           }
           simplex.Relations.push(weightedRelation)

@@ -1,5 +1,6 @@
 import { EMethods } from "../../pages/Home/components/Content/components/MethodItem/types";
 import { ERelationsTypes } from "../../pages/Home/components/Content/components/RelationsTypeItem/types";
+import { TRow } from "../../utils/types";
 
 export interface IRelationsInfo {
   relationsType: ERelationsTypes,
@@ -9,7 +10,7 @@ export interface IRelationsInfo {
 export interface IPrepareStructureParams {
   method: EMethods,
   relationsInfo: IRelationsInfo,
-  relations: Array<Array<number>>,
+  relations: Array<TRow>,
 }
 
 export interface IAnalysisStructure {

@@ -1,0 +1,9 @@
+.import-modal-body {
+
+  section {
+    &:not(:last-child) {
+      margin-bottom: 16px;
+    }
+  }
+
+}

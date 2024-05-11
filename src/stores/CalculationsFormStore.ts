@@ -3,7 +3,7 @@ import { EMethods } from "../pages/Home/components/Content/components/MethodItem
 import { ERelationsTypes } from "../pages/Home/components/Content/components/RelationsTypeItem/types";
 import {
   TColumn,
-  TData,
+  TRow,
 } from "../utils/types";
 import {
   defaultColumns,
@@ -15,7 +15,7 @@ class CalculationsFormStore {
   private _method: EMethods = EMethods.Casti;
   private _relationsType: ERelationsTypes = ERelationsTypes.binary;
   private _columns: Array<TColumn> = defaultColumns
-  private _data: Array<TData> = defaultData
+  private _data: Array<TRow> = defaultData
   private _lastIndex: number = 1
 
   private _sliceValue: number = 0 
@@ -36,7 +36,7 @@ class CalculationsFormStore {
     return this._columns
   }
 
-  get data(): Array<TData> {
+  get data(): Array<TRow> {
     return this._data
   }
 
@@ -61,7 +61,7 @@ class CalculationsFormStore {
     this._data.forEach(row => {
       row.push(0)
     })
-    const newDataRow: TData = [this._lastIndex, ...Array(this._lastIndex).fill(0)]
+    const newDataRow: TRow = [this._lastIndex, ...Array(this._lastIndex).fill(0)]
     this._data = [...this._data, newDataRow]
     const newColumn: TColumn = {
       header: this._lastIndex.toString(),
@@ -82,6 +82,12 @@ class CalculationsFormStore {
 
   setSliceValue = (value: number) => {
     this._sliceValue = value
+  }
+
+  setImportedTable = (columns: Array<TColumn>, data: Array<TRow>) => {
+    this._columns = columns
+    this._data = data
+    this._lastIndex = columns.length - 1
   }
 
 }

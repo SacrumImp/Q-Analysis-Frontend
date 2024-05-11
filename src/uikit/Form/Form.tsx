@@ -1,6 +1,7 @@
 import { Form as BootstrapForm } from 'react-bootstrap';
 import { IFormComponent } from './types';
 import {
+  Control,
   RadioButton,
 } from './components';
 
@@ -18,6 +19,7 @@ export const Form:IFormComponent = (props) => {
 
 }
 
-Form.RadioButton = RadioButton
+Form.RadioButton = RadioButton;
+Form.Control = Control;
 
 

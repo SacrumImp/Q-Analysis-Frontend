@@ -1,0 +1,1 @@
+export { useTableItem } from "./useTableItem";

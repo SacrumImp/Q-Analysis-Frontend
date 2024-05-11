@@ -1,6 +1,6 @@
 import {
   TColumn,
-  TData,
+  TRow,
 } from "./types";
 
 export const defaultColumns: Array<TColumn> = [
@@ -14,6 +14,6 @@ export const defaultColumns: Array<TColumn> = [
   }
 ]
 
-export const defaultData: Array<TData> = [
+export const defaultData: Array<TRow> = [
   [1, 0],
 ]

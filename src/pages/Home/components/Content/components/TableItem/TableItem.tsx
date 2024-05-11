@@ -8,8 +8,11 @@ import {
   AddElementButton,
   ClearElementsButton,
   EditableTable,
+  ImportButton,
+  ImportModal,
 } from "./components";
-import { useTableItem } from "./useTableItem";
+import { useTableItem } from "./hooks";
+import { useImportModal } from "./hooks/useImportModal";
 import "./styles.scss";
 
 export const TableItem = observer(() => {
@@ -19,8 +22,18 @@ export const TableItem = observer(() => {
     columns,
   } = useTableItem()
 
+  const {
+    show,
+    handleClose,
+    onClick,
+  } = useImportModal()
+
   return (
     <Accordion.Item eventKey={EAccordionItems.table}>
+      <ImportModal 
+        show={show}
+        handleClose={handleClose}
+      />
       <Accordion.Header>System's model (matrix form)</Accordion.Header>
       <Accordion.Body>
         <ButtonGroup
@@ -28,6 +41,9 @@ export const TableItem = observer(() => {
         >
           <AddElementButton/>
           <ClearElementsButton/>
+          <ImportButton
+            onClick={onClick}
+          />
         </ButtonGroup>
         <EditableTable 
           data={data}
