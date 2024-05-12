@@ -3,12 +3,17 @@ import {
   useEffect,
   useState,
 } from "react";
-import { TRow } from "../../../../../../../../../../utils/types";
+import {
+  TData,
+  TRow,
+} from "../../../../../../../../../../utils/types";
 import {
   ColumnDef,
   RowData,
 } from "@tanstack/react-table";
-import { InputCell } from "../InputCell";
+import { WeightCell } from "../WeightCell";
+import { CheckboxCell } from "../CheckboxCell";
+import { startCellValue } from "../../../../../../../../../../utils";
 
 declare module '@tanstack/react-table' {
   interface TableMeta<TData extends RowData> {
@@ -18,8 +23,8 @@ declare module '@tanstack/react-table' {
 
 export const defaultColumn: Partial<ColumnDef<TRow>> = {
   cell: ({ getValue, row: { index }, column: { id }, table }) => {
-    const initialValue = getValue();
-    const [value, setValue] = useState(initialValue);
+    const initialValue = getValue() as TData;
+    const [value, setValue] = useState<TData>(initialValue);
 
     const onBlur = () => {
       table.options.meta?.updateData(index, id, value);
@@ -29,24 +34,42 @@ export const defaultColumn: Partial<ColumnDef<TRow>> = {
       setValue(initialValue);
     }, [initialValue]);
 
-    const onChange = (e: any) => {
-      setValue(e.target.value)
+    const changeValue = (value: TData) => {
+      setValue(value)
     }
 
-    if (id === 'Index/Index') {
+    if (id === startCellValue) {
       return (
         <span>
-          {value as string}
+          {value}
         </span>
       )
     }
 
-    return (
-      <InputCell
-        value={value as string}
-        onChange={onChange}
-        onBlur={onBlur}
-      />
-    );
+    switch (typeof value) {
+      case "boolean":
+        return (
+          <CheckboxCell
+            value={value}
+            changeValue={changeValue}
+            onBlur={onBlur}
+          />
+        )
+      case "number":
+        return (
+          <WeightCell
+            value={value}
+            changeValue={changeValue}
+            onBlur={onBlur}
+          />
+        );
+      default:
+        return (
+          <span>
+            {value}
+          </span>
+        )
+    }
+
   },
 }

@@ -9,6 +9,7 @@ import {
   TRow,
 } from '../../../../../../../../utils/types';
 import { useStoreContext } from '../../../../../../../../stores';
+import { startCellValue } from '../../../../../../../../utils';
 
 export const useImportModal = () => {
 
@@ -47,7 +48,7 @@ export const useImportModal = () => {
     importedColumns.forEach((column: any, index: number) => {
       if (index === 0) {
         const firstColumn: TColumn = {
-          header: "Index/Index",
+          header: startCellValue,
           accessorFn: (row) => row[index],
         } 
         columns.push(firstColumn)
@@ -63,6 +64,7 @@ export const useImportModal = () => {
     const data: Array<TRow> = importedTable
 
     calculationsFormStore.setImportedTable(columns, data)
+    setIsValid(undefined)
   }
 
   return {

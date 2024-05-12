@@ -1,2 +1,3 @@
 export { defaultColumn } from "./DefaultColumn";
-export { InputCell } from "./InputCell";
+export { WeightCell } from "./WeightCell";
+export { CheckboxCell } from "./CheckboxCell";

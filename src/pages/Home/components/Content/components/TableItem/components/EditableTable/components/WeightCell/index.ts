@@ -1,0 +1,1 @@
+export { WeightCell } from "./WeightCell";

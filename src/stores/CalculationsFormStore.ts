@@ -3,19 +3,26 @@ import { EMethods } from "../pages/Home/components/Content/components/MethodItem
 import { ERelationsTypes } from "../pages/Home/components/Content/components/RelationsTypeItem/types";
 import {
   TColumn,
+  TData,
   TRow,
 } from "../utils/types";
 import {
   defaultColumns,
-  defaultData,
 } from "../utils/consts";
+import { getDefaultData } from "../utils";
+import {
+  RelationType,
+  BinaryType,
+  WeightType,
+} from "../classes";
 
 class CalculationsFormStore {
   
   private _method: EMethods = EMethods.Casti;
-  private _relationsType: ERelationsTypes = ERelationsTypes.binary;
+  private _relationsTypeProperties: RelationType = new BinaryType();
+  private _relationsType: ERelationsTypes = this._relationsTypeProperties.type;
   private _columns: Array<TColumn> = defaultColumns
-  private _data: Array<TRow> = defaultData
+  private _data: Array<TRow> = getDefaultData(this._relationsTypeProperties)
   private _lastIndex: number = 1
 
   private _sliceValue: number = 0 
@@ -54,14 +61,26 @@ class CalculationsFormStore {
 
   setRelationsType = (value: ERelationsTypes) => {
     this._relationsType = value
+    switch(value) {
+      case ERelationsTypes.binary:
+        this._relationsTypeProperties = new BinaryType()
+        break;
+      case ERelationsTypes.weighted:
+        this._relationsTypeProperties = new WeightType()
+        break;
+      default:
+        throw "A non-implemented method was chosen"
+    }
   }
 
   addElement = () => {
     this._lastIndex += 1
+    let defaultValue: TData = this._relationsTypeProperties.getDefaultValue()
+
     this._data.forEach(row => {
-      row.push(0)
+      row.push(defaultValue)
     })
-    const newDataRow: TRow = [this._lastIndex, ...Array(this._lastIndex).fill(0)]
+    const newDataRow: TRow = [this._lastIndex, ...Array(this._lastIndex).fill(defaultValue)]
     this._data = [...this._data, newDataRow]
     const newColumn: TColumn = {
       header: this._lastIndex.toString(),
@@ -73,7 +92,7 @@ class CalculationsFormStore {
   clearElements = () => {
     this._lastIndex = 1
     this._columns = defaultColumns
-    this._data = defaultData
+    this._data = getDefaultData(this._relationsTypeProperties)
   }
 
   updateElement = (rowId: number, columnId: string, value: number) => {
