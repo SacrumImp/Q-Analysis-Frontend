@@ -1,9 +1,9 @@
 import { FC } from "react";
 import {
   Text,
-} from "../../../../../../../../uikit";
+} from "../../../../../../../../../../uikit";
 import { ISuccessfulResultProps } from "./types";
-import { EccentricitiesTable } from "../EccentricitiesTable/EccentricitiesTable";
+import { EccentricitiesTable } from "../../../EccentricitiesTable/EccentricitiesTable";
 
 export const SuccessfulResult:FC<ISuccessfulResultProps> = (props) => {
 
@@ -14,10 +14,10 @@ export const SuccessfulResult:FC<ISuccessfulResultProps> = (props) => {
   return (
     <div>
       <Text>
-        <b>Dimension:</b> {result.dimension}
+        Dimension: {result.dimension}
       </Text>
       <Text>
-        <b>Vector:</b> {result.vectorElements}
+        Vector: {result.vectorElements}
       </Text>
       <EccentricitiesTable
         data={result.eccentricities}

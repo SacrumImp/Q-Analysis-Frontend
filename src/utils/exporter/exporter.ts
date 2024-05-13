@@ -5,7 +5,7 @@ import { prepareCalculationResultsTable, prepareSystemStructureTable } from "./l
 
 export const exportCalculationsToXLSX = (data: IExportCalculations | null) => {
 
-  if (data == null) return null
+  if (data == null || !data.calculationResults) return null
 
   const {
     systemStructure,

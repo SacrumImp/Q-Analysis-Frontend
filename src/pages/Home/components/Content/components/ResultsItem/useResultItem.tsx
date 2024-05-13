@@ -14,8 +14,6 @@ export const useResultItem = () => {
     calculationsFormStore,
     resultsStore,
   } = useStoreContext()
-  const [result, setResult] = useState<IAnalysisResult | null>()
-  const [err, setErr] = useState('')
   const [isLoading, setIsLoading] = useState(false)
 
   const onClick = async () => {
@@ -31,16 +29,18 @@ export const useResultItem = () => {
     try {
       const { data } = await axiosInstance.post(EApiRoutes.analysis, structureParams)
       const result = parseAnalysisResult(data)
-      setResult(result)
-      setErr('')
       resultsStore.addResult({
+        isError: false,
         systemStructure: structureParams,
         calculationResults: result,
       })
     }
     catch {
-      setErr('Unexpected error')
-      setResult(null)
+      resultsStore.addResult({
+        isError: true,
+        errorText: "Unexpected error",
+        systemStructure: structureParams
+      })
     }
     finally {
       setIsLoading(false)
@@ -49,8 +49,7 @@ export const useResultItem = () => {
   
   return {
     onClick,
-    result,
-    err,
+    result: resultsStore.currentResult,
     isLoading,
   }
 

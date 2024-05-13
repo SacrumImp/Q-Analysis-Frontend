@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { ETextTypes, ITextParams } from "./types";
+import { ITextParams } from "./types";
 import "./styles.scss";
 
 export const Text:FC<ITextParams> = (props) => {
@@ -13,7 +13,7 @@ export const Text:FC<ITextParams> = (props) => {
   const generalCN = `text ${className}`
 
   switch (type) {
-    case ETextTypes.h1:
+    case "h1":
       return (
         <h1 
           className={`text text__H1 ${className}`}
@@ -21,7 +21,7 @@ export const Text:FC<ITextParams> = (props) => {
           {children}
         </h1>
       )
-    case ETextTypes.h2:
+    case "h2":
       return (
         <h2 
           className={`text text__H2 ${className}`}
@@ -29,13 +29,21 @@ export const Text:FC<ITextParams> = (props) => {
           {children}
         </h2>
       )
-    case ETextTypes.span:
+    case "span":
       return (
         <span 
           className={`text text__span ${className}`}
         >
           {children}
         </span>
+      )
+    case "h3":
+      return (
+        <h3 
+          className={`text text__H3 ${className}`}
+        >
+          {children}
+        </h3>
       )
     default:
       return (

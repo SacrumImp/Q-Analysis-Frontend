@@ -9,6 +9,8 @@ export type TRow = Array<TData>
 export type TData = boolean | number
 
 export interface IExportCalculations {
+  isError: boolean,
+  errorText?: string,
   systemStructure: IAnalysisStructure,
-  calculationResults: IAnalysisResult,
+  calculationResults?: IAnalysisResult,
 }

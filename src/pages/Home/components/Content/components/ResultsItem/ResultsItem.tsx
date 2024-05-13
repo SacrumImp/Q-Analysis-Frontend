@@ -1,22 +1,30 @@
 import { observer } from "mobx-react";
 import {
   Accordion,
+  ButtonGroup,
 } from "../../../../../../uikit";
 import { EAccordionItems } from "../../types";
 import { useResultItem } from "./useResultItem";
 import {
-  ErrorResult,
-  ExportResultButton,
   PerformCalculationsButton,
-  SuccessfulResult,
+  ResultCard,
 } from "./components";
 import "./styles.scss";
+import { IExportCalculations } from "../../../../../../utils/types";
+
+const getContent = (result: IExportCalculations | null) => {
+  if (result === null) return null
+  else {
+    return (
+      <ResultCard result={result} />
+    )
+  }
+}
 
 export const ResultsItem = observer(() => {
  
   const {
     result,
-    err,
     onClick,
     isLoading,
   } = useResultItem()
@@ -25,18 +33,14 @@ export const ResultsItem = observer(() => {
     <Accordion.Item eventKey={EAccordionItems.results}>
       <Accordion.Header>Results</Accordion.Header>
       <Accordion.Body>
-        <section>
-          <SuccessfulResult result={result} />
-          <ErrorResult errorText={err} />
-        </section>
-        <section className="result-item__buttons">
+        <section className="result-item__sections">
           <PerformCalculationsButton
             disabled={isLoading}
             isLoading={isLoading}
             onClick={onClick}
           />
-          <ExportResultButton/>
         </section>
+        {getContent(result)}
       </Accordion.Body>      
     </Accordion.Item>
   )

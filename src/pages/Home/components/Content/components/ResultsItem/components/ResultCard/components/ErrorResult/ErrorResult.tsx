@@ -1,7 +1,7 @@
 import { FC } from "react";
 import {
   Text,
-} from "../../../../../../../../uikit";
+} from "../../../../../../../../../../uikit";
 import { IErrorResultProps } from "./types";
 
 export const ErrorResult:FC<IErrorResultProps> = (props) => {
@@ -13,7 +13,7 @@ export const ErrorResult:FC<IErrorResultProps> = (props) => {
   return (
     <div>
       <Text>
-        <b>{errorText}</b> 
+        Error: {errorText}
       </Text>
     </div>
   )
