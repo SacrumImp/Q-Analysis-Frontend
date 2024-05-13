@@ -3,6 +3,7 @@ import {
   IAnalysisStructure,
 } from "../../api/adapters/types";
 import { MethodsLabels } from "../../pages/Home/components/Content/components/MethodItem/types";
+import { StringConst } from "../consts";
 
 export const prepareSystemStructureTable = (systemStructure: IAnalysisStructure): Array<Array<string | number | boolean>> => {
   const systemStructureTable: Array<Array<string | number | boolean>> = [['']]
@@ -22,9 +23,9 @@ export const prepareCalculationResultsTable = (systemStructure: IAnalysisStructu
   calculationResultsTable.push(['Eccentricity calculation approach selector:', MethodsLabels.get(systemStructure.EccentricityCalculationMethod.toString())])
   calculationResultsTable.push(["Dimension:", calculationResults.dimension])
   calculationResultsTable.push(["Vector:", calculationResults.vectorElements])
-  calculationResultsTable.push(["Element", "Eccentricity"])
+  calculationResultsTable.push(["Simplex", "Eccentricity"])
   calculationResults.eccentricities.forEach(eccentricity => {
-    calculationResultsTable.push([eccentricity.simplexIndex + 1, eccentricity.isTotallyDisconnected ? '∞' : eccentricity.value])
+    calculationResultsTable.push([eccentricity.simplexIndex + 1, eccentricity.isTotallyDisconnected ? StringConst.totallyDisconnected : eccentricity.value])
   })
   return calculationResultsTable
 }

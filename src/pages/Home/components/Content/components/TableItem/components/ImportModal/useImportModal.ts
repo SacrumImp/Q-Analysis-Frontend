@@ -9,7 +9,7 @@ import {
   TRow,
 } from '../../../../../../../../utils/types';
 import { useStoreContext } from '../../../../../../../../stores';
-import { startCellValue } from '../../../../../../../../utils';
+import { StringConst } from '../../../../../../../../utils';
 
 export const useImportModal = () => {
 
@@ -48,7 +48,7 @@ export const useImportModal = () => {
     importedColumns.forEach((column: any, index: number) => {
       if (index === 0) {
         const firstColumn: TColumn = {
-          header: startCellValue,
+          header: StringConst.startCellValue,
           accessorFn: (row) => row[index],
         } 
         columns.push(firstColumn)

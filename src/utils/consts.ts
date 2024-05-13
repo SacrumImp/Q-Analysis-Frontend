@@ -2,11 +2,14 @@ import {
   TColumn,
 } from "./types";
 
-export const startCellValue = "Index/Index";
+export enum StringConst {
+  startCellValue = "Index/Index",
+  totallyDisconnected = "∞",
+}
 
 export const defaultColumns: Array<TColumn> = [
   {
-    header: startCellValue,
+    header: StringConst.startCellValue,
     accessorFn: (row) => row[0],
   },
   {

@@ -3,6 +3,7 @@ import {
   Text,
 } from "../../../../../../../../uikit";
 import { ISuccessfulResultProps } from "./types";
+import { EccentricitiesTable } from "../EccentricitiesTable/EccentricitiesTable";
 
 export const SuccessfulResult:FC<ISuccessfulResultProps> = (props) => {
 
@@ -18,9 +19,9 @@ export const SuccessfulResult:FC<ISuccessfulResultProps> = (props) => {
       <Text>
         <b>Vector:</b> {result.vectorElements}
       </Text>
-      <Text>
-        <b>Eccentricities:</b> {JSON.stringify(result.eccentricities)}
-      </Text>
+      <EccentricitiesTable
+        data={result.eccentricities}
+      />
     </div>
   )
 

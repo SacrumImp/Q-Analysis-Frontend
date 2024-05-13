@@ -1,0 +1,1 @@
+export { CellsCouple } from "./CellsCouple";

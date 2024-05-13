@@ -13,7 +13,7 @@ import {
 } from "@tanstack/react-table";
 import { WeightCell } from "../WeightCell";
 import { CheckboxCell } from "../CheckboxCell";
-import { startCellValue } from "../../../../../../../../../../utils";
+import { StringConst } from "../../../../../../../../../../utils";
 
 declare module '@tanstack/react-table' {
   interface TableMeta<TData extends RowData> {
@@ -38,7 +38,7 @@ export const defaultColumn: Partial<ColumnDef<TRow>> = {
       setValue(value)
     }
 
-    if (id === startCellValue) {
+    if (id === StringConst.startCellValue) {
       return (
         <span>
           {value}
