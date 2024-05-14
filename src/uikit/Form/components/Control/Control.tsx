@@ -6,6 +6,8 @@ export const Control:FC<IControlProps> = (props) => {
 
   const {
     type,
+    value,
+    placeholder,
     onChange,
   } = props
 
@@ -13,6 +15,8 @@ export const Control:FC<IControlProps> = (props) => {
     <Form.Control
       type={type}
       onChange={onChange}
+      value={value}
+      placeholder={placeholder}
     >
     </Form.Control>
   )

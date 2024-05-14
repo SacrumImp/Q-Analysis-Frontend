@@ -1,6 +1,5 @@
-import { IExportCalculations } from "../../../../../../../../utils/types";
+import { ICalculationResult } from "../../../../../../../../utils/exporter/types";
 
 export interface IResultCardProps {
-  result: IExportCalculations,
-  isCurrentResult?: boolean,
+  result: ICalculationResult,
 }

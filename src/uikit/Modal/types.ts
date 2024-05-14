@@ -12,6 +12,7 @@ export interface IModalProps {
   show?: boolean,
   onHide?: () => void,
   dialogClassName?: string,
+  onExited?: () => void,
 }
 
 export interface IModalComponent extends FC<IModalProps> {

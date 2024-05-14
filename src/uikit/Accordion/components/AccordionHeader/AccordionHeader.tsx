@@ -7,11 +7,12 @@ export const AccordionHeader:FC<IAccordionHeaderProps> = (props) => {
 
   const {
     children,
+    textType = 'h2',
   } = props
 
   return (
     <BootstrapAccordion.Header>
-      <Text type='h2'>
+      <Text type={textType}>
         {children}
       </Text>
     </BootstrapAccordion.Header>

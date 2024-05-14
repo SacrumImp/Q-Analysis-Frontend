@@ -1,0 +1,1 @@
+export { PreviousResult } from "./PreviousResult";

@@ -3,3 +3,5 @@ export { SuccessfulResult } from "./SuccessfulResult";
 export { ErrorResult } from "./ErrorResult";
 export { InitialDataModal } from "./InitialDataModal";
 export { ShowInitialDataButton } from "./ShowInitialDataButton";
+export { RenameResultButton } from "./RenameResultButton";
+export { RenameResultModal } from "./RenameResultModal";

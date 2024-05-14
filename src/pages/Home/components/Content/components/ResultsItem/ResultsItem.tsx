@@ -1,24 +1,30 @@
 import { observer } from "mobx-react";
 import {
   Accordion,
+  Text,
 } from "../../../../../../uikit";
 import { EAccordionItems } from "../../types";
 import { useResultItem } from "./useResultItem";
 import {
   PerformCalculationsButton,
+  PreviousResultsList,
   ResultCard,
 } from "./components";
+import { ICalculationResult } from "../../../../../../utils/exporter/types";
 import "./styles.scss";
-import { IExportCalculations } from "../../../../../../utils/types";
 
-const getContent = (result: IExportCalculations | null, isLoading: boolean) => {
+const getContent = (result: ICalculationResult | null, isLoading: boolean) => {
   if (result === null || isLoading) return null
   else {
     return (
-      <ResultCard
-        isCurrentResult
-        result={result}
+      <section>
+        <hr/>
+        <Text type="h3">Current Result</Text>
+        <hr/>
+        <ResultCard
+          result={result}
         />
+      </section>
     )
   }
 }
@@ -43,6 +49,7 @@ export const ResultsItem = observer(() => {
           />
         </section>
         {getContent(result, isLoading)}
+        <PreviousResultsList />
       </Accordion.Body>      
     </Accordion.Item>
   )

@@ -7,6 +7,8 @@ import {
   ErrorResult,
   ExportResultButton,
   InitialDataModal,
+  RenameResultButton,
+  RenameResultModal,
   ShowInitialDataButton,
   SuccessfulResult,
 } from "./components";
@@ -30,35 +32,42 @@ export const ResultCard:FC<IResultCardProps> = (props) => {
 
   const {
     result,
-    isCurrentResult = false,
   } = props
 
   const {
-    show,
-    handleClose,
-    onClick,
+    show: showInitialDataModal,
+    handleClose: handleCloseInitialDataModal,
+    onClick: onClickInitialDataModal,
   } = useModal()
 
-  const name = isCurrentResult ? "Current Result" : result.name;
+  const {
+    show: showRenameModal,
+    handleClose: handleCloseRenameModal,
+    onClick: onClickRenameModal,
+  } = useModal()
 
   return (
     <section>
       <InitialDataModal
-        name={name}
+        name={result.name}
         relationsTypeProperties={result.relationTypeProperties}
-        show={show}
-        handleClose={handleClose}
+        show={showInitialDataModal}
+        handleClose={handleCloseInitialDataModal}
         systemStructure={result.systemStructure}
       />
+      <RenameResultModal
+        id={result.id}
+        name={result.name}
+        show={showRenameModal}
+        handleClose={handleCloseRenameModal}
+      />
       <div>
-        <Text
-          type="h3"
-          className="resultCard__title"
-        >
-          {name}
+        <Text type="h4">
+          {result.name}
         </Text>
         <ButtonGroup className="resultCard__button-group">
-          <ShowInitialDataButton onClick={onClick} />
+          <ShowInitialDataButton onClick={onClickInitialDataModal}/>
+          <RenameResultButton onClick={onClickRenameModal} />
           <ExportResultButton result={result}/>
         </ButtonGroup>
       </div>

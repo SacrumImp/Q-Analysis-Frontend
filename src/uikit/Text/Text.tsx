@@ -45,6 +45,14 @@ export const Text:FC<ITextParams> = (props) => {
           {children}
         </h3>
       )
+    case "h4":
+      return (
+        <h4 
+          className={`text text__H4 ${className}`}
+        >
+          {children}
+        </h4>
+      )
     default:
       return (
         <p
