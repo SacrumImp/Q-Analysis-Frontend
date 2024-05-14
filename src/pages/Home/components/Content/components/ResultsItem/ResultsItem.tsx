@@ -1,7 +1,6 @@
 import { observer } from "mobx-react";
 import {
   Accordion,
-  ButtonGroup,
 } from "../../../../../../uikit";
 import { EAccordionItems } from "../../types";
 import { useResultItem } from "./useResultItem";
@@ -12,11 +11,14 @@ import {
 import "./styles.scss";
 import { IExportCalculations } from "../../../../../../utils/types";
 
-const getContent = (result: IExportCalculations | null) => {
-  if (result === null) return null
+const getContent = (result: IExportCalculations | null, isLoading: boolean) => {
+  if (result === null || isLoading) return null
   else {
     return (
-      <ResultCard result={result} />
+      <ResultCard
+        isCurrentResult
+        result={result}
+        />
     )
   }
 }
@@ -40,7 +42,7 @@ export const ResultsItem = observer(() => {
             onClick={onClick}
           />
         </section>
-        {getContent(result)}
+        {getContent(result, isLoading)}
       </Accordion.Body>      
     </Accordion.Item>
   )

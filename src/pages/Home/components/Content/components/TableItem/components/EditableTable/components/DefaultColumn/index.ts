@@ -1,1 +1,0 @@
-export { defaultColumn } from "./DefaultColumn";

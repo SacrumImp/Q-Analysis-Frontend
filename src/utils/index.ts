@@ -1,3 +1,7 @@
 export { exportCalculationsToXLSX } from "./exporter/exporter";
-export { getDefaultData } from "./logic";
+export {
+  getDefaultData,
+  getDefaultResultName,
+} from "./logic";
 export * from "./consts";
+export * from "./hooks";

@@ -6,7 +6,7 @@ import {
   prepareStructure
 } from "../../../../../../api";
 import { useStoreContext } from "../../../../../../stores";
-import { IAnalysisResult } from "../../../../../../api/adapters/types";
+import { getDefaultResultName } from "../../../../../../utils";
 
 export const useResultItem = () => {
 
@@ -19,17 +19,16 @@ export const useResultItem = () => {
   const onClick = async () => {
     setIsLoading(true)
     const structureParams = prepareStructure({
+      relationsTypeProperties: calculationsFormStore.relationsTypeProperties,
       method: calculationsFormStore.method,
-      relationsInfo: {
-        relationsType: calculationsFormStore.relationsType,
-        additionalParam: calculationsFormStore.sliceValue,
-      },
       relations: calculationsFormStore.data,
     })
     try {
       const { data } = await axiosInstance.post(EApiRoutes.analysis, structureParams)
       const result = parseAnalysisResult(data)
       resultsStore.addResult({
+        name: getDefaultResultName(),
+        relationTypeProperties: calculationsFormStore.relationsTypeProperties,
         isError: false,
         systemStructure: structureParams,
         calculationResults: result,
@@ -37,6 +36,8 @@ export const useResultItem = () => {
     }
     catch {
       resultsStore.addResult({
+        name: getDefaultResultName(),
+        relationTypeProperties: calculationsFormStore.relationsTypeProperties,
         isError: true,
         errorText: "Unexpected error",
         systemStructure: structureParams

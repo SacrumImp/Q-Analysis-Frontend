@@ -19,7 +19,7 @@ import {
 class CalculationsFormStore {
   
   private _method: EMethods = EMethods.Casti;
-  private _relationsTypeProperties: RelationType = new BinaryType();
+  private _relationsTypeProperties: BinaryType | RelationType = new BinaryType();
   private _relationsType: ERelationsTypes = this._relationsTypeProperties.type;
   private _columns: Array<TColumn> = defaultColumns
   private _data: Array<TRow> = getDefaultData(this._relationsTypeProperties)
@@ -107,6 +107,10 @@ class CalculationsFormStore {
     this._columns = columns
     this._data = data
     this._lastIndex = columns.length - 1
+  }
+
+  get relationsTypeProperties(): BinaryType | RelationType {
+    return this._relationsTypeProperties
   }
 
 }

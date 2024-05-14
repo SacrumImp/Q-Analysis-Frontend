@@ -1,4 +1,3 @@
-import { ERelationsTypes } from "../../pages/Home/components/Content/components/RelationsTypeItem/types";
 import {
   IPrepareStructureParams,
   IAnalysisStructure,
@@ -7,16 +6,14 @@ import {
   IAnalysisResult,
   IEccentricitiesData,
   IEccentricities,
-  IWeightedRelation,
-  IBinaryRelation,
 } from "./types";
 
 export const prepareStructure = (params: IPrepareStructureParams): IAnalysisStructure => {
 
   const {
     method,
-    relationsInfo,
     relations,
+    relationsTypeProperties,
   } = params
 
   const data: IAnalysisStructure = {
@@ -31,24 +28,7 @@ export const prepareStructure = (params: IPrepareStructureParams): IAnalysisStru
     }
 
     for (let j = 1; j <= relations.length; j++ ) {
-
-      switch(relationsInfo.relationsType) {
-        case ERelationsTypes.binary:
-          const binaryRelation: IBinaryRelation = {
-            $type: relationsInfo.relationsType,
-            Value: relations[i][j] as boolean
-          }
-          simplex.Relations.push(binaryRelation)
-          break;
-        case ERelationsTypes.weighted:
-          const weightedRelation: IWeightedRelation = {
-            $type: relationsInfo.relationsType,
-            Value: relations[i][j] as number,
-            SliceValue: relationsInfo.additionalParam || 0,
-          }
-          simplex.Relations.push(weightedRelation)
-          break;
-      }
+      simplex.Relations.push(relationsTypeProperties.getRelationWithValue(relations[i][j]))
     }
 
     data.Simplices.push(simplex)

@@ -1,5 +1,9 @@
 import { ERelationsTypes } from "../../pages/Home/components/Content/components/RelationsTypeItem/types";
 import { RelationType } from "./RelationType";
+import {
+  IBinaryRelation,
+  IBinaryRelationAdditionalParams,
+} from "./types";
 
 export class BinaryType extends RelationType {
 
@@ -8,8 +12,19 @@ export class BinaryType extends RelationType {
     this._type = ERelationsTypes.binary
   }
 
-  getDefaultValue = () => {
+  getDefaultValue = (): boolean => {
     return false
+  }
+
+  getAdditionalParams = (): IBinaryRelationAdditionalParams => {
+    return {}
+  }
+
+  getRelationWithValue = (value: boolean): IBinaryRelation => {
+    return {
+      $type: this._type,
+      Value: value
+    }
   }
 
 }

@@ -20,7 +20,7 @@ export const prepareSystemStructureTable = (systemStructure: IAnalysisStructure)
 
 export const prepareCalculationResultsTable = (systemStructure: IAnalysisStructure, calculationResults: IAnalysisResult): Array<Array<string | number | undefined>> => {
   const calculationResultsTable: Array<(string | number | undefined)[]> = []
-  calculationResultsTable.push(['Eccentricity calculation approach selector:', MethodsLabels.get(systemStructure.EccentricityCalculationMethod.toString())])
+  calculationResultsTable.push(['Eccentricity calculation approach:', MethodsLabels.get(systemStructure.EccentricityCalculationMethod.toString())])
   calculationResultsTable.push(["Dimension:", calculationResults.dimension])
   calculationResultsTable.push(["Vector:", calculationResults.vectorElements])
   calculationResultsTable.push(["Simplex", "Eccentricity"])

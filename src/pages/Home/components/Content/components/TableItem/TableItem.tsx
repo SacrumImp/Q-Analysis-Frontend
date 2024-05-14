@@ -7,12 +7,12 @@ import { EAccordionItems } from "../../types";
 import {
   AddElementButton,
   ClearElementsButton,
-  EditableTable,
   ImportButton,
   ImportModal,
 } from "./components";
+import { EditableTable } from "../../components/EditableTable";
 import { useTableItem } from "./hooks";
-import { useImportModal } from "./hooks/useImportModal";
+import { useModal } from "../../../../../../utils";
 import "./styles.scss";
 
 export const TableItem = observer(() => {
@@ -26,7 +26,7 @@ export const TableItem = observer(() => {
     show,
     handleClose,
     onClick,
-  } = useImportModal()
+  } = useModal()
 
   return (
     <Accordion.Item eventKey={EAccordionItems.table}>

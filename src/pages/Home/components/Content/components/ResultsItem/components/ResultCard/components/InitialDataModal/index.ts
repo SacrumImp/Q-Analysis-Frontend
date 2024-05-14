@@ -1,0 +1,1 @@
+export { InitialDataModal } from "./InitialDataModal";

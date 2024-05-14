@@ -1,5 +1,4 @@
 import { FC } from "react";
-import { observer } from "mobx-react";
 import {
   ButtonGroup,
   Text,
@@ -7,10 +6,13 @@ import {
 import {
   ErrorResult,
   ExportResultButton,
+  InitialDataModal,
+  ShowInitialDataButton,
   SuccessfulResult,
 } from "./components";
 import { IResultCardProps } from "./types";
 import { IExportCalculations } from "../../../../../../../../utils/types";
+import { useModal } from "../../../../../../../../utils";
 import "./styles.scss";
 
 const getContent = (result: IExportCalculations) => {
@@ -24,20 +26,39 @@ const getContent = (result: IExportCalculations) => {
   )
 }
 
-export const ResultCard:FC<IResultCardProps> = observer((props) => {
+export const ResultCard:FC<IResultCardProps> = (props) => {
 
-  const { result } = props
+  const {
+    result,
+    isCurrentResult = false,
+  } = props
+
+  const {
+    show,
+    handleClose,
+    onClick,
+  } = useModal()
+
+  const name = isCurrentResult ? "Current Result" : result.name;
 
   return (
     <section>
+      <InitialDataModal
+        name={name}
+        relationsTypeProperties={result.relationTypeProperties}
+        show={show}
+        handleClose={handleClose}
+        systemStructure={result.systemStructure}
+      />
       <div>
         <Text
           type="h3"
           className="resultCard__title"
         >
-          Current Result
+          {name}
         </Text>
         <ButtonGroup className="resultCard__button-group">
+          <ShowInitialDataButton onClick={onClick} />
           <ExportResultButton result={result}/>
         </ButtonGroup>
       </div>
@@ -45,4 +66,4 @@ export const ResultCard:FC<IResultCardProps> = observer((props) => {
     </section>
   )
 
-})
+}

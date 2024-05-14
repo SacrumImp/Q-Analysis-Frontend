@@ -13,6 +13,7 @@ export const Modal:IModalComponent = (props) => {
     children,
     show,
     onHide,
+    dialogClassName,
   } = props
 
   return (
@@ -21,6 +22,7 @@ export const Modal:IModalComponent = (props) => {
       onHide={onHide}
       backdrop="static"
       keyboard={false}
+      dialogClassName={dialogClassName}
     >
       {children}
     </BootstrapModal>

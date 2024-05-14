@@ -11,6 +11,7 @@ export interface IModalProps {
   children?: ReactNode,
   show?: boolean,
   onHide?: () => void,
+  dialogClassName?: string,
 }
 
 export interface IModalComponent extends FC<IModalProps> {

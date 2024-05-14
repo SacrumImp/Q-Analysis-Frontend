@@ -3,7 +3,7 @@ import {
   Text,
 } from "../../../../../../../../../../uikit";
 import { ISuccessfulResultProps } from "./types";
-import { EccentricitiesTable } from "../../../EccentricitiesTable/EccentricitiesTable";
+import { EccentricitiesTable } from "./components";
 
 export const SuccessfulResult:FC<ISuccessfulResultProps> = (props) => {
 
