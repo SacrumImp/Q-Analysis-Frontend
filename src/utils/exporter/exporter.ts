@@ -13,7 +13,7 @@ export const exportCalculationsToXLSX = (data: IExportCalculations | null) => {
   } = data
 
   const systemStructureTable = prepareSystemStructureTable(systemStructure)
-  const calculationResultsTable = prepareCalculationResultsTable(systemStructure, calculationResults)
+  const calculationResultsTable = prepareCalculationResultsTable(data)
 
   const structureSheet = XLSX.utils.aoa_to_sheet(systemStructureTable);
   const calculationResultsSheet = XLSX.utils.aoa_to_sheet(calculationResultsTable);

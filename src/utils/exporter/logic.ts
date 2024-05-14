@@ -2,11 +2,14 @@ import {
   IAnalysisResult,
   IAnalysisStructure,
 } from "../../api/adapters/types";
+import { RelationType } from "../../classes";
 import { MethodsLabels } from "../../pages/Home/components/Content/components/MethodItem/types";
 import { StringConst } from "../consts";
+import { IExportCalculations } from "../types";
+import { TTable } from "./types";
 
-export const prepareSystemStructureTable = (systemStructure: IAnalysisStructure): Array<Array<string | number | boolean>> => {
-  const systemStructureTable: Array<Array<string | number | boolean>> = [['']]
+export const prepareSystemStructureTable = (systemStructure: IAnalysisStructure): TTable => {
+  const systemStructureTable: TTable = [['']]
   systemStructure.Simplices.forEach((simplex, index) => {
     const row: Array<number | boolean> = [simplex.Index + 1]
     simplex.Relations.forEach(relation => {
@@ -18,14 +21,48 @@ export const prepareSystemStructureTable = (systemStructure: IAnalysisStructure)
   return systemStructureTable
 }
 
-export const prepareCalculationResultsTable = (systemStructure: IAnalysisStructure, calculationResults: IAnalysisResult): Array<Array<string | number | undefined>> => {
-  const calculationResultsTable: Array<(string | number | undefined)[]> = []
-  calculationResultsTable.push(['Eccentricity calculation approach:', MethodsLabels.get(systemStructure.EccentricityCalculationMethod.toString())])
-  calculationResultsTable.push(["Dimension:", calculationResults.dimension])
-  calculationResultsTable.push(["Vector:", calculationResults.vectorElements])
-  calculationResultsTable.push(["Simplex", "Eccentricity"])
-  calculationResults.eccentricities.forEach(eccentricity => {
-    calculationResultsTable.push([eccentricity.simplexIndex + 1, eccentricity.isTotallyDisconnected ? StringConst.totallyDisconnected : eccentricity.value])
-  })
+export const prepareCalculationResultsTable = (data: IExportCalculations): TTable => {
+  const calculationResultsTable: TTable = []
+
+  AddEccentricityCalculationApproachInfo(calculationResultsTable, data.systemStructure)
+  AddSpace(calculationResultsTable)
+
+  AddAdditionalParamsInfo(calculationResultsTable, data.relationTypeProperties)
+  AddSpace(calculationResultsTable)
+  
+  if (!data.calculationResults) return calculationResultsTable
+  AddDimensionInfo(calculationResultsTable, data.calculationResults)
+  AddVectorInfo(calculationResultsTable, data.calculationResults)
+  AddEccentricities(calculationResultsTable, data.calculationResults)
   return calculationResultsTable
+}
+
+const AddSpace = (table: TTable) => {
+  table.push([])
+}
+
+const AddEccentricityCalculationApproachInfo = (table: TTable, systemStructure: IAnalysisStructure) => {
+  table.push(['Eccentricity calculation approach:', MethodsLabels.get(systemStructure.EccentricityCalculationMethod.toString())])
+}
+
+const AddAdditionalParamsInfo = (table: TTable, relationsTypeProperties: RelationType) => {
+  table.push(["Parameter", "Value"])
+  Object.entries(relationsTypeProperties.getAdditionalParams()).forEach(paramenter => {
+    table.push([paramenter[0], paramenter[1]])
+  })
+}
+
+const AddDimensionInfo = (table: TTable, calculationResults: IAnalysisResult) => {
+  table.push(["Dimension:", calculationResults.dimension])
+}
+
+const AddVectorInfo = (table: TTable, calculationResults: IAnalysisResult) => {
+  table.push(["Vector:", calculationResults.vectorElements])
+}
+
+const AddEccentricities = (table: TTable, calculationResults: IAnalysisResult) => {
+  table.push(["Simplex", "Eccentricity"])
+  calculationResults.eccentricities.forEach(eccentricity => {
+    table.push([eccentricity.simplexIndex + 1, eccentricity.isTotallyDisconnected ? StringConst.totallyDisconnected : eccentricity.value])
+  })
 }
