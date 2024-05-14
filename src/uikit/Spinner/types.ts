@@ -1,5 +1,6 @@
 export type TSpinnerSizes = "sm";
 
 export interface ISpinnerProps {
-  size: TSpinnerSizes
+  size: TSpinnerSizes,
+  className?: string,
 }

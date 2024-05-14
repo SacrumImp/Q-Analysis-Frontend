@@ -4,14 +4,16 @@ import {
   Spinner,
 } from "../../../../../../../../uikit";
 import { IPerformCalculationsButtonProps } from "./types";
+import "./styles.scss";
 
 const getContent = (isLoading: boolean) => {
   if (isLoading) {
     return (
       <span>
         Perform calculations
-        {' '}
-        <Spinner size="sm" />
+        <span className="perform-calculations-button__spiner">
+          <Spinner size="sm" />
+        </span>
       </span>
     )
   }

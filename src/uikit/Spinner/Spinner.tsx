@@ -4,7 +4,10 @@ import { ISpinnerProps } from './types';
 
 export const Spinner:FC<ISpinnerProps> = (props) => {
 
-  const { size } = props
+  const {
+    size,
+    className,
+  } = props
 
   return (
     <BootstrapSpinner
@@ -12,6 +15,7 @@ export const Spinner:FC<ISpinnerProps> = (props) => {
       size={size}
       role="status"
       aria-hidden="true"
+      className={className}
     />
   )
 
