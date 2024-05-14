@@ -4,7 +4,10 @@ import {
   Form,
 } from "../../../../../../uikit";
 import { EAccordionItems } from "../../types";
-import { EMethods } from "./types";
+import {
+  EMethods,
+  MethodsLabels,
+} from "./types";
 import { useMethodItem } from "./useMethodItem";
 
 export const MethodItem = observer(() => {
@@ -21,7 +24,7 @@ export const MethodItem = observer(() => {
         <Form>
           <Form.RadioButton
             id='method-switch-casti'
-            label='following J.Casti'
+            label={MethodsLabels.get(EMethods.Casti)}
             name='method-switch'
             value={EMethods.Casti}
             onChange={handleMethodChange}
@@ -29,7 +32,7 @@ export const MethodItem = observer(() => {
           />
           <Form.RadioButton
             id='method-switch-duckstein'
-            label='following L.Duckstein'
+            label={MethodsLabels.get(EMethods.Duckstein)}
             name='method-switch'
             value={EMethods.Duckstein}
             onChange={handleMethodChange}
