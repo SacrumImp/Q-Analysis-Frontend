@@ -6,6 +6,7 @@ import { EAccordionItems } from "../../types";
 import { ERelationsTypes } from "../RelationsTypeItem/types";
 import {
   BinaryParams,
+  UnknownParams,
   WeightedParams,
 } from "./components";
 import { useAdditionalParamsItem } from "./useAdditionalParamsItem";
@@ -17,7 +18,7 @@ const getContent = (type: ERelationsTypes) => {
     case ERelationsTypes.weighted:
       return <WeightedParams/>
     default:
-      return <BinaryParams/>
+      return <UnknownParams/>
   }
 }
 
