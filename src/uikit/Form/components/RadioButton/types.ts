@@ -1,11 +1,15 @@
-import { ChangeEventHandler } from "react";
+import {
+  ChangeEventHandler,
+  ReactNode,
+} from "react";
 
 export interface IRadioButtonProps {
-  label: React.ReactNode,
+  label: ReactNode,
   id: string,
   name: string,
   value: string,
   onChange?: ChangeEventHandler<HTMLInputElement>,
   checked?: boolean,
   disabled?: boolean,
+  className?: string,
 }

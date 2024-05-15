@@ -1,10 +1,8 @@
-import {
-  ChangeEvent,
-} from "react";
-import { EMethods } from "./types";
-import { useStoreContext } from "../../../../../../stores";
+import { ChangeEvent } from "react";
+import { useStoreContext } from "../../../../../../../../stores";
+import { EMethods } from "../../types";
 
-export const useMethodItem = () => {
+export const useMethodRadioButton = () => {
 
   const { calculationsFormStore } = useStoreContext()
 

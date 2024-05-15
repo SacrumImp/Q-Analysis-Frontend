@@ -1,0 +1,17 @@
+@import "../../../../../../../../variables/colors.scss";
+
+.method-radio-button {
+
+  display: flex;
+  align-items: center;
+
+  &__input {
+    margin-right: 7px;
+  }
+
+  &__icon {
+    cursor: pointer;
+    color: $primary-text;
+  }
+
+}

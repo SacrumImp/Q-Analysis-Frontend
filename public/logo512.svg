@@ -1,0 +1,6 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background rectangle with rounded corners -->
+  <rect width="512" height="512" fill="#274472" rx="64" ry="64" />
+  <!-- Centered text -->
+  <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-size="330" fill="white" font-family="Arial">Q</text>
+</svg>
