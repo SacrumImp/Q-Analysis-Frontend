@@ -18,3 +18,8 @@ export { Alert } from "./Alert";
 export { Modal } from "./Modal";
 export { Badge } from "./Badge";
 export { Stack } from "./Stack";
+export {
+  BarChart,
+  type IBarChartData,
+  type IBarChartDataValue,
+} from "./BarChart";

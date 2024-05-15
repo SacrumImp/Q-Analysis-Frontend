@@ -18,7 +18,10 @@ export const PreviousResult:FC<IPreviousResultProps> = observer((props) => {
       <Accordion.Header
         textType="span"
       >
-        <Text className="previous-result__header">
+        <Text 
+          className="previous-result__header"
+          type="span"
+        >
           {result.name}
           <ResultBadges
             inComparison={result.inComparison}

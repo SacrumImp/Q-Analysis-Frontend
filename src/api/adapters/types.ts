@@ -50,3 +50,9 @@ export interface IAnalysisResult {
   vectorElements: string,
   eccentricities: Array<IEccentricitiesData>,
 }
+
+export interface IVectorResults {
+  dimension: number,
+  name: string,
+  vectorValues: Array<number>,
+}

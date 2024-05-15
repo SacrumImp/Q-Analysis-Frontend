@@ -1,0 +1,1 @@
+export { VectorChart } from "./VectorChart";

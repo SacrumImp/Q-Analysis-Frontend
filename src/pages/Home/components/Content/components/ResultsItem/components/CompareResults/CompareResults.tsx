@@ -6,6 +6,7 @@ import {
 } from "../../../../../../../../uikit";
 import { useCompareResults } from "./useCompareResults";
 import "./styles.scss";
+import { VectorChart } from "./components";
 
 export const CompareResults = observer(() => {
 
@@ -25,7 +26,10 @@ export const CompareResults = observer(() => {
         Сomparison of results
       </Text>
       <hr/>
-      <Stack gap={2}>
+      <Stack 
+        gap={2}
+        className="resuts-list__stack"
+      >
         {
           results.map((result, index) => (
             <Badge
@@ -41,6 +45,7 @@ export const CompareResults = observer(() => {
           ))
         }
       </Stack>
+      <VectorChart />
     </section>
   )
 
