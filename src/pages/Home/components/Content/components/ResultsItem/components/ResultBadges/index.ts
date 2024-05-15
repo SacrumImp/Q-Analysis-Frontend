@@ -1,0 +1,1 @@
+export { ResultBadges } from "./ResultBadges";

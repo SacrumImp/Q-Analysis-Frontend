@@ -1,5 +1,6 @@
 import { ICalculationResult } from "../../../../../../../../../../utils/types";
 
-export interface IPreviousResultProps {
-  result: ICalculationResult,
+export interface ICompareButtonProps {
+  id: number,
+  inComparison: boolean,
 }

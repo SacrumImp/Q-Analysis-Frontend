@@ -17,3 +17,8 @@ export interface IExportCalculations {
   systemStructure: IAnalysisStructure,
   calculationResults?: IAnalysisResult,
 }
+
+export interface ICalculationResult extends IExportCalculations {
+  id: number,
+  inComparison: boolean,
+}

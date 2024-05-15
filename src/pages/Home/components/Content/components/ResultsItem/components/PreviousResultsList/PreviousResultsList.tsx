@@ -5,7 +5,7 @@ import {
   Accordion,
   Text,
 } from "../../../../../../../../uikit";
-import { ICalculationResult } from "../../../../../../../../utils/exporter/types";
+import { ICalculationResult } from "../../../../../../../../utils/types";
 
 const getContent = (results: Array<ICalculationResult>) => {
   if (results.length === 0) {

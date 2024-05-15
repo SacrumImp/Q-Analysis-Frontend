@@ -16,3 +16,5 @@ export {
 export { Spinner } from "./Spinner";
 export { Alert } from "./Alert";
 export { Modal } from "./Modal";
+export { Badge } from "./Badge";
+export { Stack } from "./Stack";

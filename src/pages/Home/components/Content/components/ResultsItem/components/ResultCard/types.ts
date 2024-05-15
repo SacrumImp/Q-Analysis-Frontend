@@ -1,5 +1,4 @@
-import { ICalculationResult } from "../../../../../../../../utils/exporter/types";
+import { ICalculationResult } from "../../../../../../../../utils/types";
 
-export interface IResultCardProps {
-  result: ICalculationResult,
+export interface IResultCardProps extends ICalculationResult {
 }

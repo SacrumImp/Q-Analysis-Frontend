@@ -6,11 +6,12 @@ import {
 import { EAccordionItems } from "../../types";
 import { useResultItem } from "./useResultItem";
 import {
+  CompareResults,
   PerformCalculationsButton,
   PreviousResultsList,
   ResultCard,
 } from "./components";
-import { ICalculationResult } from "../../../../../../utils/exporter/types";
+import { ICalculationResult } from "../../../../../../utils/types";
 import "./styles.scss";
 
 const getContent = (result: ICalculationResult | null, isLoading: boolean) => {
@@ -22,7 +23,7 @@ const getContent = (result: ICalculationResult | null, isLoading: boolean) => {
         <Text type="h3">Current Result</Text>
         <hr/>
         <ResultCard
-          result={result}
+          {...result}
         />
       </section>
     )
@@ -50,6 +51,7 @@ export const ResultsItem = observer(() => {
         </section>
         {getContent(result, isLoading)}
         <PreviousResultsList />
+        <CompareResults />
       </Accordion.Body>      
     </Accordion.Item>
   )

@@ -1,8 +1,13 @@
 import { FC } from "react";
-import { IPreviousResultProps } from "./types";
-import { Accordion } from "../../../../../../../../../../uikit";
-import { ResultCard } from "../../../ResultCard";
 import { observer } from "mobx-react";
+import { IPreviousResultProps } from "./types";
+import {
+  Accordion,
+  Text,
+} from "../../../../../../../../../../uikit";
+import { ResultCard } from "../../../ResultCard";
+import "./styles.scss";
+import { ResultBadges } from "../../../ResultBadges";
 
 export const PreviousResult:FC<IPreviousResultProps> = observer((props) => {
 
@@ -13,10 +18,15 @@ export const PreviousResult:FC<IPreviousResultProps> = observer((props) => {
       <Accordion.Header
         textType="span"
       >
-        {result.name}
+        <Text className="previous-result__header">
+          {result.name}
+          <ResultBadges
+            inComparison={result.inComparison}
+          />
+        </Text>
       </Accordion.Header>
       <Accordion.Body>
-        <ResultCard result={result}/>
+        <ResultCard {...result}/>
       </Accordion.Body>      
     </Accordion.Item>
   )

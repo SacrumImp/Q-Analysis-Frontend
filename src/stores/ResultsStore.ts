@@ -1,6 +1,8 @@
 import { makeAutoObservable } from "mobx";
-import { IExportCalculations } from "../utils/types";
-import { ICalculationResult } from "../utils/exporter/types";
+import { 
+  IExportCalculations,
+  ICalculationResult,
+} from "../utils/types";
 
 class ResultsStore {
 
@@ -13,6 +15,7 @@ class ResultsStore {
   addResult = (data: IExportCalculations) => {
     this._results.push({
       id: this._results.length,
+      inComparison: false,
       ...data,
     })
   }
@@ -38,6 +41,16 @@ class ResultsStore {
     const index = this._results.findIndex(result => result.id === id)
     if (index === undefined) return
     this._results[index].name = value
+  }
+
+  changePresenceInComparison = (id: number, value: boolean) => {
+    const index = this._results.findIndex(result => result.id === id)
+    if (index === undefined) return
+    this._results[index].inComparison = value
+  }
+
+  get resultsForComparison(): Array<ICalculationResult> {
+    return this._results.filter(result => result.inComparison)
   }
 
 }

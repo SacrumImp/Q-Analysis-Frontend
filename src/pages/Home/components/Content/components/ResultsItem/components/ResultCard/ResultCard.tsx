@@ -4,6 +4,7 @@ import {
   Text,
 } from "../../../../../../../../uikit";
 import {
+  CompareButton,
   ErrorResult,
   ExportResultButton,
   InitialDataModal,
@@ -13,25 +14,33 @@ import {
   SuccessfulResult,
 } from "./components";
 import { IResultCardProps } from "./types";
-import { IExportCalculations } from "../../../../../../../../utils/types";
 import { useModal } from "../../../../../../../../utils";
+import { IAnalysisResult } from "../../../../../../../../api/adapters/types";
+import { ResultBadges } from "../ResultBadges";
 import "./styles.scss";
 
-const getContent = (result: IExportCalculations) => {
-  if (result.isError) {
+const getContent = (isError: boolean, errorText?: string, calculationResults?: IAnalysisResult) => {
+  if (isError) {
     return (
-      <ErrorResult errorText={result.errorText} />
+      <ErrorResult errorText={errorText} />
     )
   }
   return (
-    <SuccessfulResult result={result.calculationResults}/>
+    <SuccessfulResult result={calculationResults}/>
   )
 }
 
 export const ResultCard:FC<IResultCardProps> = (props) => {
 
   const {
-    result,
+    id,
+    name,
+    relationTypeProperties,
+    systemStructure,
+    inComparison,
+    isError,
+    errorText,
+    calculationResults,
   } = props
 
   const {
@@ -49,29 +58,39 @@ export const ResultCard:FC<IResultCardProps> = (props) => {
   return (
     <section>
       <InitialDataModal
-        name={result.name}
-        relationsTypeProperties={result.relationTypeProperties}
+        name={name}
+        relationsTypeProperties={relationTypeProperties}
         show={showInitialDataModal}
         handleClose={handleCloseInitialDataModal}
-        systemStructure={result.systemStructure}
+        systemStructure={systemStructure}
       />
       <RenameResultModal
-        id={result.id}
-        name={result.name}
+        id={id}
+        name={name}
         show={showRenameModal}
         handleClose={handleCloseRenameModal}
       />
       <div>
-        <Text type="h4">
-          {result.name}
+        <Text 
+          type="h4"
+          className="resultCard__name"
+        >
+          {name}
+          <ResultBadges
+            inComparison={inComparison}
+          />
         </Text>
         <ButtonGroup className="resultCard__button-group">
           <ShowInitialDataButton onClick={onClickInitialDataModal}/>
           <RenameResultButton onClick={onClickRenameModal} />
-          <ExportResultButton result={result}/>
+          <CompareButton 
+            id={id}
+            inComparison={inComparison}
+          />
+          <ExportResultButton result={props}/>
         </ButtonGroup>
       </div>
-      {getContent(result)}
+      {getContent(isError, errorText, calculationResults)}
     </section>
   )
 
