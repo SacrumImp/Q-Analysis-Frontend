@@ -1,22 +1,29 @@
+import {
+  BlockMath,
+  InlineMath,
+} from 'react-katex';
 import { EMethods } from "../../types";
 import { MethodRadioButton } from "../MethodRadioButton";
 
-const methodDescription = `
-The eccentricity of a simplex \( \sigma \) is given by the formula
-
-\\[
-\\text{ecc}(\\sigma) = \\frac{\\hat{q} - \\check{q}}{\\check{q} + 1},
-\\]
-
-where \\( \\hat{q} \\) is the dimension of \\( \\sigma \\) as a simplex, and \\( \\check{q} \\) is the largest \\( q \\) value at which \\( \\sigma \\) is connected to some other simplex in \\( K \\).
-`;
+const MethodDescription = () => {
+  return (
+    <>
+      The eccentricity of a simplex <InlineMath math={'\\sigma'}/> is given by the formula
+      <BlockMath>
+        {`ecc(\\sigma) = \\frac{\\hat{q} - \\check{q}}{\\check{q} + 1}`}
+      </BlockMath>
+      where <InlineMath math={'\\hat{q}'}/> is the dimension of <InlineMath math={'\\sigma'}/> as a simplex,{' '}
+      and <InlineMath math={'\\check{q}'}/> is the largest q value at which <InlineMath math={'\\sigma'}/> is connected to some other simplex in K.
+    </>
+  )
+}
 
 export const CastiRadioButton = () => {
 
   return (
     <MethodRadioButton
       method={EMethods.Casti}
-      methodDescription={methodDescription}
+      methodDescription={<MethodDescription/>}
     />
   )
 

@@ -3,6 +3,7 @@ import { observer } from "mobx-react";
 import {
   Form,
   Modal,
+  Text,
 } from "../../../../../../../../uikit";
 import { IMethodRadioButtonProps } from "./types";
 import { MethodsLabels } from "../../types";
@@ -38,7 +39,9 @@ export const MethodRadioButton:FC<IMethodRadioButtonProps> = observer((props) =>
           <Modal.Title>Method Description</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          
+          <Text className="method-radio-button__description-text">
+            {methodDescription}
+          </Text>
         </Modal.Body>
       </Modal>
       <Form.RadioButton
