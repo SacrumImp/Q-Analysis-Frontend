@@ -1,4 +1,4 @@
-import { prepareVectorChartData } from "../../../../../../../../../../api";
+import { prepareVectorChartData } from "../adapters";
 import { useStoreContext } from "../../../../../../../../../../stores";
 
 export const useVectorChart = () => {

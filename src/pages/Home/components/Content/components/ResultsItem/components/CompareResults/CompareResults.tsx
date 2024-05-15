@@ -6,7 +6,7 @@ import {
 } from "../../../../../../../../uikit";
 import { useCompareResults } from "./useCompareResults";
 import "./styles.scss";
-import { VectorChart } from "./components";
+import { EccentricitiesChart, VectorChart } from "./components";
 
 export const CompareResults = observer(() => {
 
@@ -46,6 +46,7 @@ export const CompareResults = observer(() => {
         }
       </Stack>
       <VectorChart />
+      <EccentricitiesChart />
     </section>
   )
 

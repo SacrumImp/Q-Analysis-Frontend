@@ -20,6 +20,7 @@ export { Badge } from "./Badge";
 export { Stack } from "./Stack";
 export {
   BarChart,
-  type IBarChartData,
-  type IBarChartDataValue,
-} from "./BarChart";
+  LineChart,
+  type IChartData,
+  type IChartDataValue,
+} from "./Charts";

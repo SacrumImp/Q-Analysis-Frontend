@@ -10,16 +10,10 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 import {
-  IBarChartData,
   IBarChartProps,
 } from './types';
-import { getRandomHexColor } from '../../utils';
-
-
-const getName = (data: Array<IBarChartData>, index: number) =>  {
-  const chart = data.find(chart => !!chart.values[index])
-  return chart?.values[index].name || index
-}
+import { getRandomHexColor } from '../../../utils';
+import { getName } from '../login';
 
 export const BarChart:FC<IBarChartProps> = (props) => {
 
