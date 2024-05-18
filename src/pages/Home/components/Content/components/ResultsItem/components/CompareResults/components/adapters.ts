@@ -56,7 +56,10 @@ export const prepareEccentricitiesChartData = (data: Array<ICalculationResult>):
       name: index.toString(),
       values: data.map(result => {
         const eccentricity = result.calculationResults?.eccentricities[index]
-        if (!eccentricity || eccentricity.isTotallyDisconnected) return
+        if (!eccentricity || eccentricity.isTotallyDisconnected) return {
+          name: result.name,
+          value: null,
+        }
         return {
           name: result.name,
           value: result.calculationResults?.eccentricities[index].value
