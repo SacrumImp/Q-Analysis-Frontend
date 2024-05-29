@@ -12,7 +12,7 @@ const MethodDescription = () => {
       <BlockMath>
         {`ecc(\\sigma) = \\frac{\\hat{q} - \\check{q}}{\\check{q} + 1}`}
       </BlockMath>
-      where <InlineMath math={'\\hat{q}'}/> is the dimension of <InlineMath math={'\\sigma'}/> as a simplex,{' '}
+      where <InlineMath math={'\\hat{q}'}/> is the dimension of <InlineMath math={'\\sigma'}/> simplex,{' '}
       and <InlineMath math={'\\check{q}'}/> is the largest q value at which <InlineMath math={'\\sigma'}/> is connected to some other simplex in K.
     </>
   )

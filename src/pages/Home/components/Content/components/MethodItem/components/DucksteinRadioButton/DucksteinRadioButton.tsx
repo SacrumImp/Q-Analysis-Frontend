@@ -13,9 +13,9 @@ const MethodDescription = () => {
       </BlockMath>
       where <InlineMath math={'q_{i}'}/> each <InlineMath math={'q'}/>-level where <InlineMath math={'\\sigma'}/> appears,{' '}
       <InlineMath math={'\\sigma_{i}'}/> the number of elements in <InlineMath math={'\\sigma_{i}'}/>'s equivalence class at{' '}
-      level <InlineMath math={'q_{i}'}/> and <InlineMath math={'q_{max}'}/> the maximum <InlineMath math={'q'}/>-level of the complex.{' '}
-      <InlineMath math={'ecc'}/> depends upon only a single simplex other than <InlineMath math={'\\sigma'}/> while <InlineMath math={"ecc'"}/>{' '}
-      depends upon all the other simplices. Furthermore, <InlineMath math={'ecc'}/> takes on values in <InlineMath math={"[0, ∞]"}/> and <InlineMath math={"ecc'"}/> in <InlineMath math={"[0, 1]"}/>.
+      level <InlineMath math={'q_{i}'}/> and <InlineMath math={'q_{max}'}/> is the maximum <InlineMath math={'q'}/>-level of the complex.{' '}
+      <InlineMath math={'ecc'}/> as calculated following J. Casti depends upon only a single simplex other than <InlineMath math={'\\sigma'}/> while <InlineMath math={"ecc'"}/>{' '}
+      depends upon all other simplices of complex K. Furthermore, <InlineMath math={'ecc'}/> takes values in <InlineMath math={"[0, ∞]"}/> and <InlineMath math={"ecc'"}/> in <InlineMath math={"[0, 1]"}/>.
     </>
   )
 }
