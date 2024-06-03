@@ -9,6 +9,8 @@ export const Badge:FC<IBadgeProps> = (props) => {
     bg,
     children,
     className,
+    hasCloseButton = false,
+    onClose,
   } = props
 
   return (
@@ -18,6 +20,13 @@ export const Badge:FC<IBadgeProps> = (props) => {
       className={className}
     >
       {children}
+      {
+        hasCloseButton &&
+        <i 
+          className="bi bi-x-lg resuts-list__tag-x"
+          onClick={onClose}
+        />
+      }
     </BootstrapBadge>
   )
 

@@ -2,7 +2,7 @@ import {
   ChangeEventHandler,
 } from "react";
 
-export type TControlTypes = "file" | "text";
+export type TControlTypes = "file" | "text" | "number";
 
 export interface IControlProps {
   type: TControlTypes,

@@ -7,4 +7,6 @@ export interface IBadgeProps {
   bg: TBadgeBg,
   children: ReactNode,
   className?: string,
+  hasCloseButton?: boolean
+  onClose?: () => void,
 }
