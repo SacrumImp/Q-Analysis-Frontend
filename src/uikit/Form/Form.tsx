@@ -11,10 +11,13 @@ export const Form:IFormComponent = (props) => {
 
   const {
     children,
+    className,
   } = props
 
   return (
-    <BootstrapForm>
+    <BootstrapForm
+      className={className}
+    >
       {children}
     </BootstrapForm>
   )

@@ -1,6 +1,5 @@
 import { ReactNode } from "react";
 
-export interface IGroupProps {
+export interface IInputGroupProps {
   children?: ReactNode,
-  className?: string,
 }

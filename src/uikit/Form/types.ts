@@ -9,6 +9,7 @@ import { ILabelProps } from "./components/Label/types";
 
 interface IFormProps {
   children?: ReactNode,
+  className?: string,
 }
 
 export interface IFormComponent extends FC<IFormProps> {

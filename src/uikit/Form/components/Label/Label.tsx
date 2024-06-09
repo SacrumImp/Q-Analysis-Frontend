@@ -1,6 +1,6 @@
 import { Form } from "react-bootstrap";
-import { Text } from "../../../Text";
 import { FC } from "react";
+import { Text } from "../../../Text";
 import { ILabelProps } from "./types";
 
 export const Label:FC<ILabelProps> = (props) => {
@@ -9,7 +9,7 @@ export const Label:FC<ILabelProps> = (props) => {
 
   return (
     <Form.Label>
-      <Text>
+      <Text type="span">
         {children}
       </Text>
     </Form.Label>

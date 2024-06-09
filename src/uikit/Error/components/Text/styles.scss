@@ -1,0 +1,8 @@
+@import "/src/variables/colors.scss";
+
+.error-text {
+  &__text {
+    color: $error-text;
+    margin-bottom: 0;
+  }
+}
