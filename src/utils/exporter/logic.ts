@@ -6,14 +6,26 @@ import { RelationType } from "../../classes";
 import { MethodsLabels } from "../../pages/Home/components/Content/components/MethodItem/types";
 import { StringConst } from "../consts";
 import { IExportCalculations } from "../types";
-import { TTable } from "./types";
+import {
+  TTable,
+  TTableCellData,
+  TTransformValueFunc,
+} from "./types";
 
-export const prepareSystemStructureTable = (systemStructure: IAnalysisStructure): TTable => {
+export const prepareSystemStructureTable = (systemStructure: IAnalysisStructure, transformValue?: TTransformValueFunc): TTable => {
   const systemStructureTable: TTable = [['']]
   systemStructure.Simplices.forEach((simplex, index) => {
-    const row: Array<number | boolean> = [simplex.Index + 1]
+    const row: Array<TTableCellData> = [simplex.Index + 1]
     simplex.Relations.forEach(relation => {
-      row.push(relation.Value)
+      if (typeof relation.Value !== "object") {
+        row.push(relation.Value)
+      }
+      else if (!!transformValue) {
+        row.push(transformValue(relation.Value))
+      }
+      else {
+        throw new Error("The cell type is not supported or the converter is not specified")
+      }
     })
     systemStructureTable[0].push(index + 1)
     systemStructureTable.push(row)

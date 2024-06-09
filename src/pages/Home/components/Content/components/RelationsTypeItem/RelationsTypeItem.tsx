@@ -19,31 +19,22 @@ export const RelationsTypeItem = observer(() => {
       <Accordion.Header>Type of system's model selector</Accordion.Header>
       <Accordion.Body>
         <Form>
-          <Form.RadioButton
-            id='relation-type'
-            label='Binary case'
-            name='relation-type-switch'
-            value={ERelationsTypes.binary}
-            onChange={handleRelationTypeChange}
-            checked={selectedValue === ERelationsTypes.binary}
-          />
-          <Form.RadioButton
-            id='relation-type'
-            label='Weighted (real-valued) case'
-            name='relation-type-switch'
-            value={ERelationsTypes.weighted}
-            onChange={handleRelationTypeChange}
-            checked={selectedValue === ERelationsTypes.weighted}
-          />
-          <Form.RadioButton
-            id='method-switch-duckstein'
-            label='tba'
-            name='relation-type-switch'
-            value={ERelationsTypes.tba}
-            onChange={handleRelationTypeChange}
-            checked={selectedValue === ERelationsTypes.tba}
-            disabled
-          />
+          {
+            Object.values(ERelationsTypes).map((value, key) => {
+              return (
+                <Form.RadioButton
+                  key={key}
+                  id='relation-type'
+                  label={value}
+                  name='relation-type-switch'
+                  value={value}
+                  onChange={handleRelationTypeChange}
+                  checked={selectedValue === value}
+                  disabled={value === ERelationsTypes.tba}
+                />
+              )
+            })
+          }
         </Form>
       </Accordion.Body>      
     </Accordion.Item>

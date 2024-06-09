@@ -1,12 +1,15 @@
-import { Badge } from "react-bootstrap";
 import { observer } from "mobx-react";
 import {
   Stack,
   Text,
+  Badge,
 } from "../../../../../../../../uikit";
 import { useCompareResults } from "./useCompareResults";
+import {
+  EccentricitiesChart,
+  VectorChart,
+} from "./components";
 import "./styles.scss";
-import { EccentricitiesChart, VectorChart } from "./components";
 
 export const CompareResults = observer(() => {
 
@@ -34,13 +37,12 @@ export const CompareResults = observer(() => {
           results.map((result, index) => (
             <Badge
               key={index}
+              bg="primary"
               className="resuts-list__tag"
+              hasCloseButton
+              onClose={() => { deleteResult(result.id) }}
             >
               {result.name}
-              <i 
-                className="bi bi-x-lg resuts-list__tag-x"
-                onClick={() => { deleteResult(result.id) }}
-              />
             </Badge>
           ))
         }

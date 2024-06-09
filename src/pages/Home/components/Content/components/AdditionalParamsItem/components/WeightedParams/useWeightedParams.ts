@@ -1,13 +1,19 @@
-import { ChangeEventHandler, useState } from "react";
-import { useStoreContext } from "../../../../../../../../stores";
-import { IWeightedRelationAdditionalParams, WeightType } from "../../../../../../../../classes";
+import {
+  ChangeEventHandler,
+  useState,
+} from "react";
+import {
+  IWeightedRelationAdditionalParams,
+  WeightType,
+} from "../../../../../../../../classes";
+import { useTypeProperties } from "../hooks";
 
 export const useWeightedParams = () => {
-  
-  const { calculationsFormStore } = useStoreContext()
 
-  const relationTypeClass = calculationsFormStore.relationsTypeProperties as WeightType
-  const additionalParams = calculationsFormStore.relationsTypeProperties.getAdditionalParams() as IWeightedRelationAdditionalParams
+  const {
+    relationTypeClass,
+    additionalParams,
+  } = useTypeProperties<WeightType, IWeightedRelationAdditionalParams>()
 
   const [value, setValue] = useState<number>(additionalParams.SliceValue)
 

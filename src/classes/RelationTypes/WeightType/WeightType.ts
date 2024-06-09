@@ -1,5 +1,5 @@
-import { ERelationsTypes } from "../../pages/Home/components/Content/components/RelationsTypeItem/types";
-import { RelationType } from "./RelationType";
+import { ERelationsTypes } from "../../../pages/Home/components/Content/components/RelationsTypeItem/types";
+import { RelationType } from "../RelationType";
 import {
   IWeightedRelation,
   IWeightedRelationAdditionalParams,
@@ -34,6 +34,10 @@ export class WeightType extends RelationType {
       Value: value,
       SliceValue: this._sliceValue
     }
+  }
+
+  transformValueToString = (value: number): string | undefined => {
+    return value.toString()
   }
 
 }

@@ -1,4 +1,5 @@
-export { RelationType } from "./RelationType";
-export { BinaryType } from "./BinaryType";
-export { WeightType } from "./WeightType";
+export * from "./RelationType";
+export * from "./BinaryType";
+export * from "./WeightType";
+export * from "./FuzzySetsType1Type";
 export * from "./types";

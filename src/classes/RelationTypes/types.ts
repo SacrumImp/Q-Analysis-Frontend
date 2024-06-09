@@ -1,25 +1,16 @@
-// Additional Params Interfaces
+import {
+  IBinaryRelation,
+  IBinaryRelationAdditionalParams,
+} from "./BinaryType";
+import {
+  IFuzzySetsType1Relation,
+  IFuzzySetsType1RelationAdditionalParams,
+} from "./FuzzySetsType1Type";
+import {
+  IWeightedRelation,
+  IWeightedRelationAdditionalParams,
+} from "./WeightType";
 
-export type TAdditionalParams = IBinaryRelationAdditionalParams | IWeightedRelationAdditionalParams
+export type TAdditionalParams = IBinaryRelationAdditionalParams | IWeightedRelationAdditionalParams | IFuzzySetsType1RelationAdditionalParams
 
-export interface IBinaryRelationAdditionalParams { }
-
-export interface IWeightedRelationAdditionalParams {
-  SliceValue: number
-}
-
-// Relations Interfaces
-
-export type TRelation = IBinaryRelation | IWeightedRelation
-
-export interface IRelation {
-  $type: string,
-}
-
-export interface IBinaryRelation extends IRelation, IBinaryRelationAdditionalParams {
-  Value: boolean,
-}
-
-export interface IWeightedRelation extends IRelation, IWeightedRelationAdditionalParams {
-  Value: number,
-}
+export type TRelation = IBinaryRelation | IWeightedRelation | IFuzzySetsType1Relation

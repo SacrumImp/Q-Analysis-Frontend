@@ -1,5 +1,5 @@
-import { ERelationsTypes } from "../../pages/Home/components/Content/components/RelationsTypeItem/types";
-import { RelationType } from "./RelationType";
+import { ERelationsTypes } from "../../../pages/Home/components/Content/components/RelationsTypeItem/types";
+import { RelationType } from "../RelationType";
 import {
   IBinaryRelation,
   IBinaryRelationAdditionalParams,
@@ -25,6 +25,10 @@ export class BinaryType extends RelationType {
       $type: this._type,
       Value: value
     }
+  }
+
+  transformValueToString = (value: boolean): string => {
+    return value.toString()
   }
 
 }

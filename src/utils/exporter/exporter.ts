@@ -1,18 +1,21 @@
 import * as XLSX from "xlsx";
 import { saveAs } from "file-saver";
 import { IExportCalculations } from "../types";
-import { prepareCalculationResultsTable, prepareSystemStructureTable } from "./logic";
+import {
+  prepareCalculationResultsTable,
+  prepareSystemStructureTable,
+} from "./logic";
+import { TTransformValueFunc } from "./types";
 
-export const exportCalculationsToXLSX = (data: IExportCalculations | null) => {
+export const exportCalculationsToXLSX = (data: IExportCalculations | null, transformValue?: TTransformValueFunc) => {
 
   if (data == null || !data.calculationResults) return null
 
   const {
     systemStructure,
-    calculationResults,
   } = data
 
-  const systemStructureTable = prepareSystemStructureTable(systemStructure)
+  const systemStructureTable = prepareSystemStructureTable(systemStructure, transformValue)
   const calculationResultsTable = prepareCalculationResultsTable(data)
 
   const structureSheet = XLSX.utils.aoa_to_sheet(systemStructureTable);

@@ -3,11 +3,14 @@ import {
   IAnalysisResult,
   IAnalysisStructure,
 } from "../api/adapters/types";
-import { RelationType } from "../classes";
+import {
+  RelationType,
+  TTrapezoid,
+} from "../classes";
 
 export type TColumn = ColumnDef<TRow, TData>;
 export type TRow = Array<TData>
-export type TData = boolean | number
+export type TData = boolean | number | TTrapezoid
 
 export interface IExportCalculations {
   name: string,

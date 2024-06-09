@@ -1,0 +1,1 @@
+export { ClippingPoints } from "./ClippingPoints";

@@ -40,11 +40,22 @@ export const getDefaultColumn = (disabled: boolean): Partial<ColumnDef<TRow>> =>
       }
   
       if (id === StringConst.startCellValue) {
-        return (
-          <span>
-            {value}
-          </span>
-        )
+        switch (typeof value) {
+          case "object": 
+            return (
+              <span>
+                Simplex identifier can't be shown
+              </span>
+            )
+          case "string":
+          case "number":
+          default:
+            return (
+              <span>
+                {value}
+              </span>
+            )
+        }
       }
   
       switch (typeof value) {
@@ -66,6 +77,12 @@ export const getDefaultColumn = (disabled: boolean): Partial<ColumnDef<TRow>> =>
               disabled={disabled}
             />
           );
+        case "object":
+          return (
+            <span>
+              Cell value can't be shown
+            </span>
+          )
         default:
           return (
             <span>

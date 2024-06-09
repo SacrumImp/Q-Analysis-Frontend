@@ -1,0 +1,1 @@
+export { useTypeProperties } from "./useTypeProperties";
