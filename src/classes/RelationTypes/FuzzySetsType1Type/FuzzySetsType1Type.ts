@@ -50,7 +50,7 @@ export class FuzzySetsType1Type extends RelationType {
     }
 
     return {
-      $type: this._type,
+      $type: "FuzzySetsType1",
       Value: value,
       Domain: this._domain,
       ClippingPoints: this._clippingPoints,
@@ -75,6 +75,18 @@ export class FuzzySetsType1Type extends RelationType {
 
   setMatchProportion = (value: number) => {
     this._matchProportion = value
+  }
+
+  transformValueFromString(value?: string | undefined): TTrapezoid | undefined {
+    if (value === undefined) return
+    const points = value.replace(/[\[\]]+/g,'').split(",")
+    if (points.length !== 4) return
+    return {
+      LeftBottomPart: parseFloat(points[0]),
+      LeftTopPart: parseFloat(points[1]),
+      RightTopPart: parseFloat(points[2]),
+      RightBottomPart: parseFloat(points[3]),
+    }
   }
 
 }

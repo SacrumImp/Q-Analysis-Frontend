@@ -30,7 +30,7 @@ export class WeightType extends RelationType {
 
   getRelationWithValue = (value: number): IWeightedRelation => {
     return {
-      $type: this._type,
+      $type: "Weighted",
       Value: value,
       SliceValue: this._sliceValue
     }
@@ -38,6 +38,11 @@ export class WeightType extends RelationType {
 
   transformValueToString = (value: number): string | undefined => {
     return value.toString()
+  }
+
+  transformValueFromString(value?: string | undefined): number | undefined {
+    if (value === undefined) return value
+    else return parseFloat(value)
   }
 
 }

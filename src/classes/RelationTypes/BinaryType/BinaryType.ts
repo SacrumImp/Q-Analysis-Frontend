@@ -22,13 +22,19 @@ export class BinaryType extends RelationType {
 
   getRelationWithValue = (value: boolean): IBinaryRelation => {
     return {
-      $type: this._type,
+      $type: "Binary",
       Value: value
     }
   }
 
   transformValueToString = (value: boolean): string => {
-    return value.toString()
+    return value ? "1" : "0"
+  }
+
+  transformValueFromString(value?: string | undefined): boolean | undefined {
+    if (value === undefined) return value
+    else if (parseInt(value) === 1) return true
+    else if (parseInt(value) === 0) return false
   }
 
 }

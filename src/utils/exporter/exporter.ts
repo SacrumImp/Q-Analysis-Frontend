@@ -7,7 +7,7 @@ import {
 } from "./logic";
 import { TTransformValueFunc } from "./types";
 
-export const exportCalculationsToXLSX = (data: IExportCalculations | null, transformValue?: TTransformValueFunc) => {
+export const exportCalculationsToXLSX = (data: IExportCalculations | null, transformValue: TTransformValueFunc) => {
 
   if (data == null || !data.calculationResults) return null
 

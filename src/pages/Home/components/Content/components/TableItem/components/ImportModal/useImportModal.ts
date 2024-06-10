@@ -61,7 +61,15 @@ export const useImportModal = () => {
       columns.push(generalColumn)
     })
 
-    const data: Array<TRow> = importedTable
+    const data: Array<TRow> = importedTable.map((row) => {
+      return row.map((value: any, index: number) => {
+        // Used for saving the first column with index numbers
+        if (index === 0) return value
+        else {
+          return calculationsFormStore.relationsTypeProperties.transformValueFromString(value)
+        }
+      })
+    })
 
     calculationsFormStore.setImportedTable(columns, data)
     setIsValid(undefined)

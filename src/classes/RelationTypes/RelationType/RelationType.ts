@@ -22,8 +22,11 @@ export abstract class RelationType {
   /** Getter for structure of relation with value enriched by additional params */
   abstract getRelationWithValue(value: TData): TRelation;
 
-  /** Transformer for getting string value (used for objects) */
+  /** Transformer for getting string value */
   abstract transformValueToString(value: TData): string | undefined;
+
+  /** Transformer for getting value from string */
+  abstract transformValueFromString(value?: string): TData | undefined;
 
   get type(): ERelationsTypes {
     return this._type

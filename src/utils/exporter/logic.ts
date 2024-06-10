@@ -12,20 +12,12 @@ import {
   TTransformValueFunc,
 } from "./types";
 
-export const prepareSystemStructureTable = (systemStructure: IAnalysisStructure, transformValue?: TTransformValueFunc): TTable => {
+export const prepareSystemStructureTable = (systemStructure: IAnalysisStructure, transformValue: TTransformValueFunc): TTable => {
   const systemStructureTable: TTable = [['']]
   systemStructure.Simplices.forEach((simplex, index) => {
     const row: Array<TTableCellData> = [simplex.Index + 1]
     simplex.Relations.forEach(relation => {
-      if (typeof relation.Value !== "object") {
-        row.push(relation.Value)
-      }
-      else if (!!transformValue) {
-        row.push(transformValue(relation.Value))
-      }
-      else {
-        throw new Error("The cell type is not supported or the converter is not specified")
-      }
+      row.push(transformValue(relation.Value))
     })
     systemStructureTable[0].push(index + 1)
     systemStructureTable.push(row)
