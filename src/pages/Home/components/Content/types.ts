@@ -1,5 +1,5 @@
 export enum EAccordionItems {
-  table = 'table',
+  systemModel = 'systemModel',
   method = 'method',
   relationType = 'relationType',
   results = 'results',

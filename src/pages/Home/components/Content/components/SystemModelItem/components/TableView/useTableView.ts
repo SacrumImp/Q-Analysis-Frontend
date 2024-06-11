@@ -1,6 +1,6 @@
-import { useStoreContext } from "../../../../../../../stores";
+import { useStoreContext } from "../../../../../../../../stores";
 
-export const useTableItem = () => {
+export const useTableView = () => {
 
   const { calculationsFormStore } = useStoreContext()
 

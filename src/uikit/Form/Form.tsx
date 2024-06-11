@@ -5,6 +5,7 @@ import {
   RadioButton,
   Group,
   Label,
+  Select,
 } from './components';
 
 export const Form:IFormComponent = (props) => {
@@ -28,5 +29,6 @@ Form.RadioButton = RadioButton;
 Form.Control = Control;
 Form.Group = Group;
 Form.Label = Label;
+Form.Select = Select;
 
 

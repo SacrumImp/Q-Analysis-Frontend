@@ -1,0 +1,11 @@
+@import "/src/variables/colors.scss";
+
+.default-view {
+  &__text {
+    color: $error-text;
+  }
+
+  &__buttons {
+    margin-bottom: 10px;
+  }
+}

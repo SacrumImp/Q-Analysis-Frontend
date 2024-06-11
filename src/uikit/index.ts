@@ -21,6 +21,7 @@ export { Stack } from "./Stack";
 export {
   BarChart,
   LineChart,
+  TrapezoidChart,
   type IChartData,
   type IChartDataValue,
 } from "./Charts";

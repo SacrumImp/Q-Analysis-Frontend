@@ -3,7 +3,7 @@ import {
   AdditionalParamsItem,
   MethodItem,
   RelationsTypeItem,
-  TableItem,
+  SystemModelItem,
 } from "./components";
 import { ResultsItem } from "./components/ResultsItem";
 import "./styles.scss";
@@ -13,11 +13,11 @@ export const Content = () => {
 
   return (
     <div className="content">
-      <Accordion defaultActiveKey={[ EAccordionItems.table, EAccordionItems.method, EAccordionItems.relationType, EAccordionItems.results, EAccordionItems.additionalParams]}>
+      <Accordion defaultActiveKey={[ EAccordionItems.systemModel, EAccordionItems.method, EAccordionItems.relationType, EAccordionItems.results, EAccordionItems.additionalParams]}>
         <MethodItem/>
         <RelationsTypeItem/>
         <AdditionalParamsItem/>
-        <TableItem/>
+        <SystemModelItem/>
         <ResultsItem/>
       </Accordion>
     </div>
