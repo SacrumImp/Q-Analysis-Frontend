@@ -18,6 +18,7 @@ import {
   IFuzzySetsType1RelationAdditionalParams,
   RelationType,
 } from "../../../../../../../../../../classes";
+import { StringConst } from "../../../../../../../../../../utils";
 
 const getContent = (relationsTypeProperties: RelationType, columns: Array<TColumn>, rows: Array<TRow>) => {
   switch(relationsTypeProperties.type) {
@@ -67,7 +68,7 @@ export const InitialDataModal:FC<IInitialDataModal> = (props) => {
       <Modal.Body>
         <section>
           <Text>
-            Eccentricity calculation approach: {eccentricityCalculationApproach}
+            {StringConst.calculationApproachLabel}: {eccentricityCalculationApproach}
           </Text>
         </section>
         <AdditionalParamsTable additionalParams={relationsTypeProperties.getAdditionalParams()} />

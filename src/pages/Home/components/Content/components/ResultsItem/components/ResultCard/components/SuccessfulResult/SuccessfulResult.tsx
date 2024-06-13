@@ -4,6 +4,7 @@ import {
 } from "../../../../../../../../../../uikit";
 import { ISuccessfulResultProps } from "./types";
 import { EccentricitiesTable } from "./components";
+import { StringConst } from "../../../../../../../../../../utils";
 
 export const SuccessfulResult:FC<ISuccessfulResultProps> = (props) => {
 
@@ -14,10 +15,10 @@ export const SuccessfulResult:FC<ISuccessfulResultProps> = (props) => {
   return (
     <div>
       <Text>
-        Dimension: {result.result.dimension}
+        {StringConst.dimensionLabel}: {result.result.dimension}
       </Text>
       <Text>
-        Vector: {result.result.vectorElements}
+        {StringConst.vectorLabel}: {result.result.vectorElements}
       </Text>
       <EccentricitiesTable
         data={result.result.eccentricities}

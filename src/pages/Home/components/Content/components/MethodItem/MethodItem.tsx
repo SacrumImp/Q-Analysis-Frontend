@@ -8,12 +8,13 @@ import {
   CastiRadioButton,
   DucksteinRadioButton,
 } from "./components";
+import { StringConst } from "../../../../../../utils";
 
 export const MethodItem = observer(() => {
 
   return (
     <Accordion.Item eventKey={EAccordionItems.method}>
-      <Accordion.Header>Eccentricity calculation approach selector</Accordion.Header>
+      <Accordion.Header>{StringConst.calculationApproachLabel} selector</Accordion.Header>
       <Accordion.Body>
         <Form>
           <CastiRadioButton />

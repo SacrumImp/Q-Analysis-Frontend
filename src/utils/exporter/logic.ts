@@ -51,7 +51,7 @@ const AddSpace = (table: TTable) => {
 }
 
 const AddEccentricityCalculationApproachInfo = (table: TTable, systemStructure: IAnalysisStructure) => {
-  table.push(['Eccentricity calculation approach:', MethodsLabels.get(systemStructure.EccentricityCalculationMethod.toString())])
+  table.push([`${StringConst.calculationApproachLabel}:`, MethodsLabels.get(systemStructure.EccentricityCalculationMethod.toString())])
 }
 
 const AddAdditionalParamsInfo = (table: TTable, relationsTypeProperties: RelationType) => {
@@ -71,11 +71,11 @@ const AddKeysInfo = (table: TTable, calculationResults: IAnalysisResult) => {
 }
 
 const AddDimensionInfo = (table: TTable, calculationResults: IAnalysisResult) => {
-  table.push(["Dimension:", calculationResults.result.dimension])
+  table.push([`${StringConst.dimensionLabel}:`, calculationResults.result.dimension])
 }
 
 const AddVectorInfo = (table: TTable, calculationResults: IAnalysisResult) => {
-  table.push(["Vector:", calculationResults.result.vectorElements])
+  table.push([`${StringConst.vectorLabel}:`, calculationResults.result.vectorElements])
 }
 
 const AddEccentricities = (table: TTable, calculationResults: IAnalysisResult) => {

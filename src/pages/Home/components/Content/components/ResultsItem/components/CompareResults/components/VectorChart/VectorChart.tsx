@@ -4,6 +4,7 @@ import {
   Text,
 } from "../../../../../../../../../../uikit";
 import { useVectorChart } from "./useVectorChart";
+import { StringConst } from "../../../../../../../../../../utils";
 
 export const VectorChart = observer(() => {
 
@@ -16,7 +17,7 @@ export const VectorChart = observer(() => {
       <Text
         type="h4"
       >
-        Vector
+        {StringConst.vectorLabel}
       </Text>
       <BarChart data={data} />
     </section>

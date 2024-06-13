@@ -5,6 +5,9 @@ import {
 export enum StringConst {
   startCellValue = "Index/Index",
   totallyDisconnected = "∞",
+  vectorLabel = "Structural vector",
+  dimensionLabel = "Dimension",
+  calculationApproachLabel = "Eccentricity calculation approach",
 }
 
 export const defaultColumns: Array<TColumn> = [
