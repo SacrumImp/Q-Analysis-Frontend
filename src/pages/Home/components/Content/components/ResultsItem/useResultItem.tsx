@@ -2,7 +2,7 @@ import { useState } from "react";
 import {
   EApiRoutes,
   axiosInstance,
-  parseAnalysisResult,
+  parseAnalysisResults,
   prepareStructure
 } from "../../../../../../api";
 import { useStoreContext } from "../../../../../../stores";
@@ -25,7 +25,7 @@ export const useResultItem = () => {
     })
     try {
       const { data } = await axiosInstance.post(EApiRoutes.analysis, structureParams)
-      const result = parseAnalysisResult(data)
+      const result = parseAnalysisResults(data)
       resultsStore.addResult({
         name: getDefaultResultName(),
         relationTypeProperties: calculationsFormStore.relationsTypeProperties,

@@ -33,14 +33,14 @@ export class FuzzySetsType1Type extends RelationType {
 
     return {
       Domain: this._domain,
-      ClippingPoints: this._clippingPoints,
+      ClippingPoints: Array.from(this._clippingPoints).sort(),
       MatchProportion: this._matchProportion,
     }
   }
 
   transformValueToString = (value: TTrapezoid): string | undefined => {
     if (value === null) return
-    return `[${value.LeftBottomPart}, ${value.LeftTopPart}, ${value.RightTopPart}, ${value.RightBottomPart}]`
+    return `[${value.LeftBottomPoint}, ${value.LeftTopPoint}, ${value.RightTopPoint}, ${value.RightBottomPoint}]`
   }
 
   getRelationWithValue = (value: TTrapezoid): IFuzzySetsType1Relation => {
@@ -51,9 +51,9 @@ export class FuzzySetsType1Type extends RelationType {
 
     return {
       $type: "FuzzySetsType1",
-      Value: value,
+      Value: value || null,
       Domain: this._domain,
-      ClippingPoints: this._clippingPoints,
+      ClippingPoints: Array.from(this._clippingPoints).sort(),
       MatchProportion: this._matchProportion,
     }
   }
@@ -82,10 +82,10 @@ export class FuzzySetsType1Type extends RelationType {
     const points = value.replace(/[\[\]]+/g,'').split(",")
     if (points.length !== 4) return
     return {
-      LeftBottomPart: parseFloat(points[0]),
-      LeftTopPart: parseFloat(points[1]),
-      RightTopPart: parseFloat(points[2]),
-      RightBottomPart: parseFloat(points[3]),
+      LeftBottomPoint: parseFloat(points[0]),
+      LeftTopPoint: parseFloat(points[1]),
+      RightTopPoint: parseFloat(points[2]),
+      RightBottomPoint: parseFloat(points[3]),
     }
   }
 

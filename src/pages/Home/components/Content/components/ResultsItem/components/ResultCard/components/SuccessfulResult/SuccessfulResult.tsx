@@ -9,18 +9,18 @@ export const SuccessfulResult:FC<ISuccessfulResultProps> = (props) => {
 
   const { result } = props
 
-  if (!result) return null
+  if (!result?.result) return null
 
   return (
     <div>
       <Text>
-        Dimension: {result.dimension}
+        Dimension: {result.result.dimension}
       </Text>
       <Text>
-        Vector: {result.vectorElements}
+        Vector: {result.result.vectorElements}
       </Text>
       <EccentricitiesTable
-        data={result.eccentricities}
+        data={result.result.eccentricities}
       />
     </div>
   )

@@ -7,15 +7,15 @@ export interface IDomain {
 
 export interface IFuzzySetsType1RelationAdditionalParams {
   Domain: IDomain,
-  ClippingPoints: Set<number>,
+  ClippingPoints: Array<number>,
   MatchProportion: number,
 }
 
 export interface ITrapezoid {
-  LeftBottomPart: number,
-  LeftTopPart: number,
-  RightBottomPart: number,
-  RightTopPart: number,
+  LeftBottomPoint: number,
+  LeftTopPoint: number,
+  RightBottomPoint: number,
+  RightTopPoint: number,
 }
 
 export type TTrapezoid = ITrapezoid | null

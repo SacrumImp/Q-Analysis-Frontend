@@ -39,13 +39,13 @@ export interface IEccentricities {
   isTotallyDisconnected: boolean,
 }
 
-export interface IAnalysisResultData {
+export interface ICalculationResultData {
   dimension: number,
   vectorElements: string,
   eccentricities: Array<IEccentricitiesData>,
 }
 
-export interface IAnalysisResult {
+export interface ICalculationResult {
   dimension: number,
   vectorElements: string,
   eccentricities: Array<IEccentricitiesData>,
@@ -55,4 +55,26 @@ export interface IVectorResults {
   dimension: number,
   name: string,
   vectorValues: Array<number>,
+}
+
+export interface IAnalysisResultKeyData {
+  name: string,
+  value: number,
+}
+
+export interface IAnalysisResultKey {
+  name: string,
+  value: number,
+}
+
+export interface IAnalysisResultData {
+  isAggregated: boolean,
+  keys: Array<IAnalysisResultKeyData>,
+  result: ICalculationResultData,
+}
+
+export interface IAnalysisResult {
+  isAggregated: boolean,
+  keys: Array<IAnalysisResultKey>,
+  result: ICalculationResult,
 }

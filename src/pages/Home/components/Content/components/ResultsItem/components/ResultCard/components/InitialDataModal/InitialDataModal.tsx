@@ -7,7 +7,37 @@ import { IInitialDataModal } from "./types";
 import { useInitialDataModal } from "./useInitialDataModal";
 import { EditableTable } from "../../../../../EditableTable";
 import { AdditionalParamsTable } from "./components";
+import { ERelationsTypes } from "../../../../../RelationsTypeItem/types";
+import {
+  TColumn,
+  TRow,
+} from "../../../../../../../../../../utils/types";
 import "./styles.scss";
+import { RelationGraph } from "../../../../../RelationGraph";
+import {
+  IFuzzySetsType1RelationAdditionalParams,
+  RelationType,
+} from "../../../../../../../../../../classes";
+
+const getContent = (relationsTypeProperties: RelationType, columns: Array<TColumn>, rows: Array<TRow>) => {
+  switch(relationsTypeProperties.type) {
+    case ERelationsTypes.binary:
+    case ERelationsTypes.weighted:
+      return <EditableTable
+                disabled
+                columns={columns}
+                data={rows}
+              />
+    case ERelationsTypes.fuzzySetsType1:
+      const additionalParams = relationsTypeProperties.getAdditionalParams() as IFuzzySetsType1RelationAdditionalParams
+      return <RelationGraph
+                domain={additionalParams.Domain}
+                data={rows}
+             />
+    default:
+      return null
+  }
+}
 
 export const InitialDataModal:FC<IInitialDataModal> = (props) => {
 
@@ -20,7 +50,8 @@ export const InitialDataModal:FC<IInitialDataModal> = (props) => {
   } = props
 
   const {
-    tableData,
+    columns,
+    rows,
     eccentricityCalculationApproach,
   } = useInitialDataModal(systemStructure)
 
@@ -44,9 +75,7 @@ export const InitialDataModal:FC<IInitialDataModal> = (props) => {
           <Text>
             System's model:
           </Text>
-          <EditableTable
-            {...tableData}
-          />
+          {getContent(relationsTypeProperties, columns, rows)}
         </section>
       </Modal.Body>
     </Modal>

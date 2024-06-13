@@ -1,20 +1,17 @@
 import { observer } from "mobx-react";
 import {
   ButtonGroup,
-  Form,
-  InputGroup,
 } from "../../../../../../../../uikit";
 import {
   ClearElementsButton,
   ImportButton,
   ImportModal,
-} from "../../components";
+} from "..";
 import { useModal } from "../../../../../../../../utils";
-import { useGraphView } from "./useGraphView";
 import {
-  ElementsOptions,
   RelationGraph,
-} from "./components";
+} from "../../../RelationGraph";
+import { useGraphView } from "./useGraphView";
 import "./styles.scss";
 
 export const GraphView = observer(() => {
@@ -26,12 +23,8 @@ export const GraphView = observer(() => {
   } = useModal()
 
   const {
-    selectOptions,
+    domain,
     data,
-    rowValue,
-    columnValue,
-    onChangeRowValue,
-    onChangeColumnValue,
   } = useGraphView()
 
   return (
@@ -48,21 +41,10 @@ export const GraphView = observer(() => {
           onClick={onClick}
         />
       </ButtonGroup>
-      <InputGroup className="graph-view__input-group">
-        <Form.Select
-          value={rowValue}
-          onChange={onChangeRowValue}
-        >
-          <ElementsOptions values={selectOptions} />
-        </Form.Select>
-        <Form.Select
-          value={columnValue}
-          onChange={onChangeColumnValue}
-        >
-          <ElementsOptions values={selectOptions} />
-        </Form.Select>
-      </InputGroup>
-      <RelationGraph value={data || null}/>
+      <RelationGraph
+        domain={domain}
+        data={data}
+      />
     </section>
   )
 

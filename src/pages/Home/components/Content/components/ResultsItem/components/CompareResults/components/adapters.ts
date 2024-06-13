@@ -1,4 +1,7 @@
-import { IVectorResults } from "../../../../../../../../../api/adapters/types";
+import {
+  IAnalysisResult,
+  IVectorResults,
+} from "../../../../../../../../../api/adapters/types";
 import {
   IChartData,
   IChartDataValue,
@@ -29,9 +32,17 @@ export const prepareVectorChartData = (data: Array<ICalculationResult>): Array<I
 
 }
 
-const prepareVectors = (data: ICalculationResult): IVectorResults => {
+const getResultForComparison = (results: Array<IAnalysisResult> | undefined): IAnalysisResult | undefined => {
+  if (results === undefined || results.length === 0) return
+  if (results.length > 1) {
+    return results.find(result => result.isAggregated)
+  }
+  return results[0]
+}
 
-  const vectorValues = data.calculationResults?.vectorElements
+const prepareVectors = (data: ICalculationResult): IVectorResults => {
+  const result = getResultForComparison(data.calculationResults)
+  const vectorValues = result?.result.vectorElements
     .replace(/[()]/g, '')
     .split(",")
     .map(element => parseInt(element.trim()))
@@ -40,29 +51,29 @@ const prepareVectors = (data: ICalculationResult): IVectorResults => {
 
   return {
     name: data.name,
-    dimension: data.calculationResults?.dimension || 0,
+    dimension: result?.result.dimension || 0,
     vectorValues: vectorValues, 
   }
-
 }
 
 export const prepareEccentricitiesChartData = (data: Array<ICalculationResult>): Array<IChartData> => {
 
-  const maxCount = Math.max( ...data.map(result => result.calculationResults?.eccentricities.length || 0))
+  const maxCount = Math.max( ...data.map(result => getResultForComparison(result.calculationResults)?.result.eccentricities.length || 0))
 
   let result: Array<IChartData> = []
   Array.from({ length: maxCount }, (_, index) => {
+
     const dim: IChartData = {
       name: index.toString(),
       values: data.map(result => {
-        const eccentricity = result.calculationResults?.eccentricities[index]
+        const eccentricity = getResultForComparison(result.calculationResults)?.result.eccentricities[index]
         if (!eccentricity || eccentricity.isTotallyDisconnected) return {
           name: result.name,
           value: null,
         }
         return {
           name: result.name,
-          value: result.calculationResults?.eccentricities[index].value
+          value: getResultForComparison(result.calculationResults)?.result.eccentricities[index].value
         }
       }).filter((res): res is IChartDataValue => res !== undefined),
     }

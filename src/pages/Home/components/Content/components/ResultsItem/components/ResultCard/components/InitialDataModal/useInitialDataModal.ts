@@ -22,7 +22,7 @@ export const useInitialDataModal = (systemStructure: IAnalysisStructure) => {
       accessorFn: (row) => row[0],
     })
 
-    const data: Array<TRow> = systemStructure.Simplices
+    const rows: Array<TRow> = systemStructure.Simplices
       .map(simplex => {
         const relations = simplex.Relations.map(relation => {
           return relation.Value
@@ -32,14 +32,13 @@ export const useInitialDataModal = (systemStructure: IAnalysisStructure) => {
       })
 
     return {
-      disabled: true,
       columns,
-      data,
+      rows,
     }
   }
 
   return {
-    tableData: getTableData(),
+    ...getTableData(),
     eccentricityCalculationApproach: MethodsLabels.get(systemStructure.EccentricityCalculationMethod.toString())
   }
 

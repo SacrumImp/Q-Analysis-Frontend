@@ -10,6 +10,7 @@ import {
   InitialDataModal,
   RenameResultButton,
   RenameResultModal,
+  SelectSubResult,
   ShowInitialDataButton,
   SuccessfulResult,
 } from "./components";
@@ -17,6 +18,7 @@ import { IResultCardProps } from "./types";
 import { useModal } from "../../../../../../../../utils";
 import { IAnalysisResult } from "../../../../../../../../api/adapters/types";
 import { ResultBadges } from "../ResultBadges";
+import { useResultCard } from "./useResultCard";
 import "./styles.scss";
 
 const getContent = (isError: boolean, errorText?: string, calculationResults?: IAnalysisResult) => {
@@ -55,6 +57,11 @@ export const ResultCard:FC<IResultCardProps> = (props) => {
     onClick: onClickRenameModal,
   } = useModal()
 
+  const {
+    selectedSubResultValue,
+    onChangeSelectedSubResult,
+  } = useResultCard()
+
   return (
     <section>
       <InitialDataModal
@@ -89,8 +96,13 @@ export const ResultCard:FC<IResultCardProps> = (props) => {
           />
           <ExportResultButton result={props}/>
         </ButtonGroup>
+        <SelectSubResult
+          value={selectedSubResultValue}
+          onChange={onChangeSelectedSubResult}
+          calculationResults={calculationResults}
+        />
       </div>
-      {getContent(isError, errorText, calculationResults)}
+      {getContent(isError, errorText, calculationResults ? calculationResults[selectedSubResultValue] : undefined)}
     </section>
   )
 

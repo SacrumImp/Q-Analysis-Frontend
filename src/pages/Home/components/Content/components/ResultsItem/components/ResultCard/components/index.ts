@@ -6,3 +6,4 @@ export { ShowInitialDataButton } from "./ShowInitialDataButton";
 export { RenameResultButton } from "./RenameResultButton";
 export { RenameResultModal } from "./RenameResultModal";
 export { CompareButton } from "./CompareButton";
+export { SelectSubResult } from "./SelectSubResult";

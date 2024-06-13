@@ -1,5 +1,6 @@
 import {
   ChangeEventHandler,
+  useEffect,
   useState,
 } from "react";
 import {
@@ -16,7 +17,7 @@ export const useClippingPoints = () => {
   } = useTypeProperties<FuzzySetsType1Type, IFuzzySetsType1RelationAdditionalParams>()
 
   const [pointValue, setPointValue] = useState<number | "">(0)
-  const [points, setPoints] = useState(Array.from(additionalParams.ClippingPoints).sort())
+  const [points, setPoints] = useState(additionalParams.ClippingPoints)
 
   const onChangePointValue: ChangeEventHandler<HTMLInputElement> = (event) => {
     if (event.target.value === "") {
@@ -29,19 +30,19 @@ export const useClippingPoints = () => {
 
   const onDeletePoint = (value: number) => {
     relationTypeClass.deleteClippingPoint(value)
-    setPoints(Array.from(additionalParams.ClippingPoints).sort())
+    setPoints((prevArray) => prevArray.filter(item => item !== value));
   }
 
   const onAddPoint = () => {
     if (pointValue === "") return
     relationTypeClass.addClippingPoint(pointValue)
-    setPoints(Array.from(additionalParams.ClippingPoints).sort())
+    setPoints((prevArray) => [...prevArray, pointValue]);
   }
 
   return {
     pointValue,
     onChangePointValue,
-    points,
+    points: Array.from(points).sort(),
     onDeletePoint,
     onAddPoint,
     hasError: pointValue === "" || pointValue < 0 || pointValue > 1

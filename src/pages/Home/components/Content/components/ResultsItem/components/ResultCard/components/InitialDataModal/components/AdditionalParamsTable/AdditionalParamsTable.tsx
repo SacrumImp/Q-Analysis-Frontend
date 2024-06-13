@@ -28,7 +28,7 @@ export const AdditionalParamsTable:FC<IAdditionalParamsTableProps> = (props) => 
             Object.entries(additionalParams).map((value, index) => (
               <tr key={index}>
                 <td>{value[0]}</td>
-                <td>{value[1]}</td>
+                <td>{JSON.stringify(value[1])}</td>
               </tr>
             ))
           }

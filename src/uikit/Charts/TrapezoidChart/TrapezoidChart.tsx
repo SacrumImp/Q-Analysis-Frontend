@@ -21,19 +21,19 @@ const prepareData = (value: TTrapezoid): Array<ITrapezoidChartData> => {
   if (value === null) return []
   return [
     {
-      xValue: value.LeftBottomPart,
+      xValue: value.LeftBottomPoint,
       yValue: 0,
     },
     {
-      xValue: value.LeftTopPart,
+      xValue: value.LeftTopPoint,
       yValue: 1,
     },
     {
-      xValue: value.RightTopPart,
+      xValue: value.RightTopPoint,
       yValue: 1,
     },
     {
-      xValue: value.RightBottomPart,
+      xValue: value.RightBottomPoint,
       yValue: 0,
     },
   ]

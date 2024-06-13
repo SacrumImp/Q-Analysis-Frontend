@@ -35,9 +35,14 @@ export const prepareCalculationResultsTable = (data: IExportCalculations): TTabl
   AddSpace(calculationResultsTable)
   
   if (!data.calculationResults) return calculationResultsTable
-  AddDimensionInfo(calculationResultsTable, data.calculationResults)
-  AddVectorInfo(calculationResultsTable, data.calculationResults)
-  AddEccentricities(calculationResultsTable, data.calculationResults)
+
+  data.calculationResults.map(result => {
+    AddKeysInfo(calculationResultsTable, result)
+    AddDimensionInfo(calculationResultsTable, result)
+    AddVectorInfo(calculationResultsTable, result)
+    AddEccentricities(calculationResultsTable, result)
+    AddSpace(calculationResultsTable)
+  })
   return calculationResultsTable
 }
 
@@ -52,21 +57,30 @@ const AddEccentricityCalculationApproachInfo = (table: TTable, systemStructure: 
 const AddAdditionalParamsInfo = (table: TTable, relationsTypeProperties: RelationType) => {
   table.push(["Parameter", "Value"])
   Object.entries(relationsTypeProperties.getAdditionalParams()).forEach(paramenter => {
-    table.push([paramenter[0], paramenter[1]])
+    table.push([paramenter[0], JSON.stringify(paramenter[1])])
   })
 }
 
+const AddKeysInfo = (table: TTable, calculationResults: IAnalysisResult) => {
+  if (calculationResults.isAggregated) {
+    table.push(["Keys:", "Aggregated"])
+  }
+  else {
+    table.push(["Keys:", JSON.stringify(calculationResults.keys)])
+  }
+}
+
 const AddDimensionInfo = (table: TTable, calculationResults: IAnalysisResult) => {
-  table.push(["Dimension:", calculationResults.dimension])
+  table.push(["Dimension:", calculationResults.result.dimension])
 }
 
 const AddVectorInfo = (table: TTable, calculationResults: IAnalysisResult) => {
-  table.push(["Vector:", calculationResults.vectorElements])
+  table.push(["Vector:", calculationResults.result.vectorElements])
 }
 
 const AddEccentricities = (table: TTable, calculationResults: IAnalysisResult) => {
   table.push(["Simplex", "Eccentricity"])
-  calculationResults.eccentricities.forEach(eccentricity => {
+  calculationResults.result.eccentricities.forEach(eccentricity => {
     table.push([eccentricity.simplexIndex + 1, eccentricity.isTotallyDisconnected ? StringConst.totallyDisconnected : eccentricity.value])
   })
 }

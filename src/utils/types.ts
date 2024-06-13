@@ -18,7 +18,7 @@ export interface IExportCalculations {
   isError: boolean,
   errorText?: string,
   systemStructure: IAnalysisStructure,
-  calculationResults?: IAnalysisResult,
+  calculationResults?: Array<IAnalysisResult>,
 }
 
 export interface ICalculationResult extends IExportCalculations {

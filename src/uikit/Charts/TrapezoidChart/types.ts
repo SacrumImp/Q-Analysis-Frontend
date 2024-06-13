@@ -4,7 +4,7 @@ import {
 } from "../../../classes";
 
 export interface ITrapezoidChartProps {
-  value: TTrapezoid,
+  value: TTrapezoid | null,
   domain: IDomain,
 }
 
