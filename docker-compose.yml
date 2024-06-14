@@ -7,5 +7,5 @@ services:
     build:
       context: .
     ports:
-      - 54321:30
+      - 54321:80
 
