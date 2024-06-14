@@ -1,5 +1,6 @@
 import {
   ChangeEventHandler,
+  MouseEventHandler,
 } from "react";
 
 export type TControlTypes = "file" | "text" | "number";
@@ -9,4 +10,5 @@ export interface IControlProps {
   value?: string | number | string[],
   placeholder?: string,
   onChange?: ChangeEventHandler,
+  onClick?: MouseEventHandler,
 }

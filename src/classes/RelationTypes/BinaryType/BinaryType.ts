@@ -37,4 +37,8 @@ export class BinaryType extends RelationType {
     else if (parseInt(value) === 0) return false
   }
 
+  validateValue(value: any): boolean {
+    return value !== undefined && (parseInt(value) === 0 || parseInt(value) === 1)
+  }
+
 }

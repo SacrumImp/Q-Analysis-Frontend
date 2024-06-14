@@ -3,7 +3,10 @@ import {
   useState,
 } from 'react';
 import * as XLSX from 'xlsx';
-import { validateTable } from './logic';
+import {
+  replaceEmptyValues,
+  validateTable,
+} from './logic';
 import {
   TColumn,
   TRow,
@@ -16,7 +19,8 @@ export const useImportModal = () => {
   const { calculationsFormStore } = useStoreContext()
 
   const [currentImportedTable, setCurrentImportedTable] = useState<any[]>()
-  const [isValid, setIsValid] = useState<boolean>()
+  const [isValid, setIsValid] = useState<boolean | null>(null)
+  const [errors, setErrors] = useState<Array<string>>([])
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files === null) return
@@ -28,12 +32,14 @@ export const useImportModal = () => {
       const workbook = XLSX.read(data, { type: 'array' });
       const sheetName = workbook.SheetNames[0];
       const sheet = workbook.Sheets[sheetName];
-      const importedData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+      const importedData = XLSX.utils.sheet_to_json(sheet, { header: 1, raw: true, defval: null });
+      const preparedImportedData = replaceEmptyValues(importedData)
 
-      const validationResult = validateTable(importedData)
-      setIsValid(validationResult)
-      if (validationResult) {
-        setCurrentImportedTable(importedData)
+      const validationResult = validateTable(preparedImportedData, calculationsFormStore.relationsTypeProperties)
+      setIsValid(validationResult.isValid)
+      setErrors(validationResult.errorList)
+      if (validationResult.isValid) {
+        setCurrentImportedTable(preparedImportedData)
       }
     };
     reader.readAsArrayBuffer(file);
@@ -72,13 +78,21 @@ export const useImportModal = () => {
     })
 
     calculationsFormStore.setImportedTable(columns, data)
-    setIsValid(undefined)
+    setIsValid(null)
+    setErrors([])
+  }
+
+  const onHide = () => {
+    setIsValid(null)
+    setErrors([])
   }
 
   return {
     onChange,
     isValid,
+    errors,
     saveTable,
+    onHide,
   }
 
 }

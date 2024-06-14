@@ -4,35 +4,53 @@ import {
   Button,
   Form,
   Modal,
+  Text,
 } from "../../../../../../../../uikit";
-import { IImportModalProps } from "./types";
+import {
+  IImportModalProps,
+} from "./types";
 import { useImportModal } from "./useImportModal";
 import "./styles.scss";
 
-const getAlert = (isValid?: boolean) => {
+const getAlert = (isValid: boolean | null, errors: Array<string>) => {
+  if (isValid === null) return null
   if (isValid) {
     return (
       <section>
-        <Alert
-          variant="success"
-        >
-          Table validated successfully
+        <Alert variant="success">
+          <Text 
+            type="span"
+            className="alert__title"
+          >
+            Table validated successfully
+          </Text>
         </Alert>
       </section>
     )
   }
-  else if (isValid == false) {
+  else {
     return (
       <section>
-        <Alert
-          variant="danger"
-        >
-          An incorrect table
+        <Alert variant="danger">
+          <Text className="alert__title">
+            An incorrect table
+          </Text>
+          {
+            errors.map((err, index) => (
+              <li key={index}>
+                <Text
+                  type="span"
+                  className="alert__text"
+                >
+                  {err}
+                </Text>
+              </li>
+            ))
+          }
         </Alert>
       </section>
     )
   }
-  else return null
 }
 
 export const ImportModal:FC<IImportModalProps> = (props) => {
@@ -45,13 +63,18 @@ export const ImportModal:FC<IImportModalProps> = (props) => {
   const {
     onChange,
     isValid,
+    errors,
     saveTable,
+    onHide,
   } = useImportModal()
 
   return (
     <Modal
       show={show}
-      onHide={handleClose}
+      onHide={() => {
+        handleClose()
+        onHide()
+      }}
     >
       <Modal.Header closeButton>
         <Modal.Title>Import System's Model</Modal.Title>
@@ -65,12 +88,15 @@ export const ImportModal:FC<IImportModalProps> = (props) => {
             onChange={onChange}
           />
         </section>
-        {getAlert(isValid)}
+        {getAlert(isValid, errors)}
       </Modal.Body>
       <Modal.Footer>
         <Button 
           variant="secondary" 
-          onClick={handleClose}
+          onClick={() => {
+            handleClose()
+            onHide()
+          }}
         >
           Close
         </Button>

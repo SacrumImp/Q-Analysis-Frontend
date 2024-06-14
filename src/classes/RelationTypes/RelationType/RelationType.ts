@@ -28,6 +28,9 @@ export abstract class RelationType {
   /** Transformer for getting value from string */
   abstract transformValueFromString(value?: string): TData | undefined;
 
+  /** Validator for relation values (mainly for imported tables) */
+  abstract validateValue(value: any): boolean;
+
   get type(): ERelationsTypes {
     return this._type
   }

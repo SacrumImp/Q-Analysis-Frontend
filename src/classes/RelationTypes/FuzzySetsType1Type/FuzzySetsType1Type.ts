@@ -89,4 +89,17 @@ export class FuzzySetsType1Type extends RelationType {
     }
   }
 
+  validateValue(value: any): boolean {
+    if (value === undefined) return true
+    const points = value.replace(/[\[\]]+/g,'').split(",")
+    if (points.length !== 4) return false
+    const parsedValues = points.map((point: any) => parseFloat(point))
+    if (parsedValues.some((point: any) => isNaN(point))) return false
+    return this._domain.LeftBoundary <= parsedValues[0] &&
+      parsedValues[0] <= parsedValues[1] &&
+      parsedValues[1] <= parsedValues[2] &&
+      parsedValues[2] <= parsedValues[3] &&
+      parsedValues[3] <= this._domain.RightBoundary
+  }
+
 }

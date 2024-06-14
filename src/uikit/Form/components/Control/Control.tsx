@@ -9,6 +9,7 @@ export const Control:FC<IControlProps> = (props) => {
     value,
     placeholder,
     onChange,
+    onClick,
   } = props
 
   return (
@@ -17,6 +18,7 @@ export const Control:FC<IControlProps> = (props) => {
       onChange={onChange}
       value={value}
       placeholder={placeholder}
+      onClick={onClick}
     >
     </Form.Control>
   )

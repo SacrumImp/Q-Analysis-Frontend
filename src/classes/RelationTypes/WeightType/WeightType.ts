@@ -45,4 +45,8 @@ export class WeightType extends RelationType {
     else return parseFloat(value)
   }
 
+  validateValue(value: any): boolean {
+    return value !== undefined && !isNaN(parseFloat(value))
+  }
+
 }
