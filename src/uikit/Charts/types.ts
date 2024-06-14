@@ -1,9 +1,15 @@
 export interface IChartData {
-  name: string,
+  name: IChartDataName,
   values: Array<IChartDataValue>,
+}
+
+export interface IChartDataName {
+  prefix: string,
+  value: string
 }
 
 export interface IChartDataValue {
   name: string,
-  value: number,
+  value: number | null,
+  color: string,
 }

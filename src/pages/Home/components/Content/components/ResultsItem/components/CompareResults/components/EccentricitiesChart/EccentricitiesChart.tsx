@@ -1,12 +1,15 @@
+import { FC } from "react";
+import { observer } from "mobx-react";
 import {
   Text,
-  LineChart,
+  BarChart,
 } from "../../../../../../../../../../uikit";
 import { useEccentricitiesChart } from "./useEccentricitiesChart";
+import { IEccentricitiesChartProps } from "./types";
 
-export const EccentricitiesChart = () => {
+export const EccentricitiesChart:FC<IEccentricitiesChartProps> = observer((props) => {
 
-  const { data } = useEccentricitiesChart()
+  const { data } = useEccentricitiesChart(props)
 
   return (
     <section>
@@ -15,8 +18,8 @@ export const EccentricitiesChart = () => {
       >
         Eccentricities
       </Text>
-      <LineChart data={data}/>
+      <BarChart data={data}/>
     </section>
   )
 
-}
+})

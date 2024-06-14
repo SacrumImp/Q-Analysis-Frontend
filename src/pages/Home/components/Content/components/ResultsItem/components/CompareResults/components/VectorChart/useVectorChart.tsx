@@ -1,12 +1,15 @@
-import { prepareVectorChartData } from "../adapters";
+import { prepareVectorChartData, prepareVectorsStrings } from "../adapters";
 import { useStoreContext } from "../../../../../../../../../../stores";
+import { IVectorChartProps } from "./types";
 
-export const useVectorChart = () => {
+export const useVectorChart = (props: IVectorChartProps) => {
 
   const { resultsStore } = useStoreContext()
+  const { colors } = props
 
   return {
-    data: prepareVectorChartData(resultsStore.resultsForComparison)
+    vectors: prepareVectorsStrings(resultsStore.resultsForComparison),
+    data: prepareVectorChartData(resultsStore.resultsForComparison, colors)
   }
 
 }

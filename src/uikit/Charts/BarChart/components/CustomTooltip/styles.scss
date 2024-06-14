@@ -1,0 +1,18 @@
+@import "/src/variables/colors.scss";
+
+.custom-tooltip {
+  background-color: $bar-chart-tooltip-back;
+  border: 0.7px solid $bar-chart-tooltip-border-color;
+  padding: 10px;
+
+  &__title {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  &__values {
+    font-size: 14px;
+    margin-bottom: 0;
+  }
+}

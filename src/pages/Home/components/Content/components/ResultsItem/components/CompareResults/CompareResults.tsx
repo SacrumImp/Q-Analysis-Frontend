@@ -15,6 +15,7 @@ export const CompareResults = observer(() => {
 
   const {
     results,
+    colors,
     deleteResult,
   } = useCompareResults()
 
@@ -47,8 +48,8 @@ export const CompareResults = observer(() => {
           ))
         }
       </Stack>
-      <VectorChart />
-      <EccentricitiesChart />
+      <VectorChart colors={colors}/>
+      <EccentricitiesChart colors={colors}/>
     </section>
   )
 

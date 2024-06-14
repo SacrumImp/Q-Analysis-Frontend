@@ -30,3 +30,4 @@ export {
   Error,
   EErrorTexts,
 } from "./Error";
+export { HorizontalScrollContainer } from "./HorizontalScrollContainer";

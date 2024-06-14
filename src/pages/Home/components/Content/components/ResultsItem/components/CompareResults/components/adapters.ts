@@ -7,8 +7,9 @@ import {
   IChartDataValue,
 } from "../../../../../../../../../uikit";
 import { ICalculationResult } from "../../../../../../../../../utils/types";
+import { IVectorString } from "../types";
 
-export const prepareVectorChartData = (data: Array<ICalculationResult>): Array<IChartData> => {
+export const prepareVectorChartData = (data: Array<ICalculationResult>, colors: Array<string>): Array<IChartData> => {
 
   const vectorsResults = data.map(prepareVectors)
   const maxDimension = Math.max( ...vectorsResults.map(result => result.dimension)) + 1
@@ -16,14 +17,19 @@ export const prepareVectorChartData = (data: Array<ICalculationResult>): Array<I
   let result: Array<IChartData> = []
   Array.from({ length: maxDimension }, (_, index) => {
     const dim: IChartData = {
-      name: index.toString(),
-      values: vectorsResults.map(vectorResult => {
-        if (!vectorResult.vectorValues[index]) return
-        return {
-          name: vectorResult.name,
-          value: vectorResult.vectorValues[index]
-        }
-      }).filter((res): res is IChartDataValue => res !== undefined),
+      name: {
+        prefix: "Level of connectivity",
+        value: index.toString()
+      },
+      values: vectorsResults
+        .filter(vectorResult => vectorResult.vectorValues[index])
+        .map((vectorResult, resultIndex) => {
+          return {
+            name: vectorResult.name,
+            value: vectorResult.vectorValues[index],
+            color: colors[resultIndex],
+          }
+      }),
     }
     result.push(dim)
   })
@@ -56,24 +62,31 @@ const prepareVectors = (data: ICalculationResult): IVectorResults => {
   }
 }
 
-export const prepareEccentricitiesChartData = (data: Array<ICalculationResult>): Array<IChartData> => {
+export const prepareEccentricitiesChartData = (data: Array<ICalculationResult>, colors: Array<string>): Array<IChartData> => {
 
   const maxCount = Math.max( ...data.map(result => getResultForComparison(result.calculationResults)?.result.eccentricities.length || 0))
 
   let result: Array<IChartData> = []
   Array.from({ length: maxCount }, (_, index) => {
-
     const dim: IChartData = {
-      name: index.toString(),
-      values: data.map(result => {
+      name: {
+        prefix: "Simplex",
+        value: index.toString()
+      },
+      values: data.map((result, resultIndex) => {
         const eccentricity = getResultForComparison(result.calculationResults)?.result.eccentricities[index]
-        if (!eccentricity || eccentricity.isTotallyDisconnected) return {
-          name: result.name,
-          value: null,
+        if (!eccentricity) return
+        else if (eccentricity.isTotallyDisconnected) {
+          return {
+            name: result.name,
+            value: null,
+            color: colors[resultIndex],
+          }
         }
         return {
           name: result.name,
-          value: getResultForComparison(result.calculationResults)?.result.eccentricities[index].value
+          value: getResultForComparison(result.calculationResults)?.result.eccentricities[index].value,
+          color: colors[resultIndex],
         }
       }).filter((res): res is IChartDataValue => res !== undefined),
     }
@@ -81,4 +94,13 @@ export const prepareEccentricitiesChartData = (data: Array<ICalculationResult>):
   })
 
   return result
+}
+
+export const prepareVectorsStrings = (data: Array<ICalculationResult>): Array<IVectorString> => {
+  return data.map(result => {
+    return {
+      name: result.name,
+      value: getResultForComparison(result.calculationResults)?.result.vectorElements || "",
+    }
+  })
 }

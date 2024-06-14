@@ -1,4 +1,5 @@
 import { useStoreContext } from "../../../../../../../../stores";
+import { getRandomHexColor } from "../../../../../../../../utils";
 
 export const useCompareResults = () => {
 
@@ -10,6 +11,7 @@ export const useCompareResults = () => {
 
   return {
     results: resultsStore.resultsForComparison,
+    colors: resultsStore.resultsForComparison.map(_ => getRandomHexColor()),
     deleteResult
   }
 

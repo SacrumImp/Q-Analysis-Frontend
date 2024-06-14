@@ -11,7 +11,7 @@ import {
 } from 'recharts';
 import { ILineChartProps } from './types';
 import { getRandomHexColor } from '../../../utils';
-import { getName } from '../login';
+import { getName } from '../logic';
 
 
 export const LineChart:FC<ILineChartProps> = (props) => {

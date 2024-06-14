@@ -1,3 +1,4 @@
+import { FC } from "react";
 import { observer } from "mobx-react";
 import {
   BarChart,
@@ -5,12 +6,15 @@ import {
 } from "../../../../../../../../../../uikit";
 import { useVectorChart } from "./useVectorChart";
 import { StringConst } from "../../../../../../../../../../utils";
+import { IVectorChartProps } from "./types";
+import "./styles.scss";
 
-export const VectorChart = observer(() => {
+export const VectorChart:FC<IVectorChartProps> = observer((props) => {
 
   const {
+    vectors,
     data,
-  } = useVectorChart()
+  } = useVectorChart(props)
 
   return (
     <section>
@@ -19,6 +23,18 @@ export const VectorChart = observer(() => {
       >
         {StringConst.vectorLabel}
       </Text>
+      <section className="vector-chart__strings">
+        {
+          vectors.map((vector, index) => (
+            <Text
+              key={index}
+              className="vector-chart__string"
+            >
+              {vector.name}: {vector.value}
+            </Text>
+          ))
+        }
+      </section>
       <BarChart data={data} />
     </section>
   )
