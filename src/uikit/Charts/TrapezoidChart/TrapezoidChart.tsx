@@ -10,40 +10,19 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 import {
-  ITrapezoidChartData,
   ITrapezoidChartProps,
 } from './types';
 import { Text } from '../../../uikit';
 import "./styles.scss";
-import { TTrapezoid } from '../../../classes';
-
-const prepareData = (value: TTrapezoid): Array<ITrapezoidChartData> => {
-  if (value === null) return []
-  return [
-    {
-      xValue: value.LeftBottomPoint,
-      yValue: 0,
-    },
-    {
-      xValue: value.LeftTopPoint,
-      yValue: 1,
-    },
-    {
-      xValue: value.RightTopPoint,
-      yValue: 1,
-    },
-    {
-      xValue: value.RightBottomPoint,
-      yValue: 0,
-    },
-  ]
-}
+import { CustomTooltip } from './atoms';
+import { prepareData } from './logic';
 
 export const TrapezoidChart:FC<ITrapezoidChartProps> = (props) => {
 
   const {
     value,
     domain,
+    type = "trapezoid",
   } = props
 
   if (value === null) {
@@ -56,7 +35,7 @@ export const TrapezoidChart:FC<ITrapezoidChartProps> = (props) => {
     )
   }
 
-  const data = prepareData(value)
+  const preparedData = prepareData(value, type)
 
   return (
     <ResponsiveContainer
@@ -83,10 +62,10 @@ export const TrapezoidChart:FC<ITrapezoidChartProps> = (props) => {
           dataKey="yValue"
           domain={[0,1]}
         />
-        <Tooltip />
+        <Tooltip content={<CustomTooltip/>}/>
         <Legend />
         <Line
-          data={data}
+          data={preparedData}
           name={"Rate"}
           activeDot={{ r: 8 }}
           strokeWidth={4}

@@ -28,6 +28,7 @@ export const prepareVectorChartData = (data: Array<ICalculationResult>, colors: 
             name: vectorResult.name,
             value: vectorResult.vectorValues[index],
             color: colors[resultIndex],
+            additionalInfo: vectorResult.connectivityComponents !== undefined ? prepareConnectivityComponents(vectorResult.connectivityComponents[index]) : undefined
           }
       }),
     }
@@ -54,11 +55,11 @@ const prepareVectors = (data: ICalculationResult): IVectorResults => {
     .map(element => parseInt(element.trim()))
     .reverse()
     || []
-
   return {
     name: data.name,
     dimension: result?.result.dimension || 0,
     vectorValues: vectorValues, 
+    connectivityComponents: result?.result.connectivityComponents || undefined,
   }
 }
 
@@ -103,4 +104,12 @@ export const prepareVectorsStrings = (data: Array<ICalculationResult>): Array<IV
       value: getResultForComparison(result.calculationResults)?.result.vectorElements || "",
     }
   })
+}
+
+const prepareConnectivityComponents = (data: Array<Array<number>> | null) => {
+  if (data === null) return undefined
+  var components = data.map(component => {
+    return `{${component.map(element => `X${element}`).join(", ")}}`
+  })
+  return components.join(", ")
 }

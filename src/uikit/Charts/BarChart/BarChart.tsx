@@ -17,7 +17,7 @@ import {
 import { getName } from '../logic';
 import { HorizontalScrollContainer } from '../../HorizontalScrollContainer';
 import { getMaxValue } from './logic';
-import { CustomTooltip } from './components';
+import { CustomTooltip } from './atoms';
 import { Formatter } from 'recharts/types/component/DefaultLegendContent';
 
 export const BarChart:FC<IBarChartProps> = (props) => {

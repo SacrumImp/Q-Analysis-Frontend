@@ -12,4 +12,5 @@ export interface IChartDataValue {
   name: string,
   value: number | null,
   color: string,
+  additionalInfo?: string,
 }

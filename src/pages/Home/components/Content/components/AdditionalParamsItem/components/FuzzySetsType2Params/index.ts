@@ -1,0 +1,1 @@
+export { FuzzySetsType2Params } from "./FuzzySetsType2Params";

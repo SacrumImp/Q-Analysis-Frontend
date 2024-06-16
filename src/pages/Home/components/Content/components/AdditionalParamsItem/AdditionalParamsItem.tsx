@@ -8,6 +8,7 @@ import { ERelationsTypes } from "../RelationsTypeItem/types";
 import {
   BinaryParams,
   FuzzySetsType1Params,
+  FuzzySetsType2Params,
   UnknownParams,
   WeightedParams,
 } from "./components";
@@ -22,6 +23,8 @@ const getContent = (type: ERelationsTypes) => {
       return <WeightedParams/>
     case ERelationsTypes.fuzzySetsType1:
       return <FuzzySetsType1Params/>
+    case ERelationsTypes.fuzzySetsType2:
+      return <FuzzySetsType2Params/>
     default:
       return <UnknownParams/>
   }

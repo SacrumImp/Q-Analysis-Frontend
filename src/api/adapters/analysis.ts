@@ -52,6 +52,7 @@ const parseEccentricities = (data: IEccentricitiesData): IEccentricities => {
 
 const parseCalculationResult = (data: ICalculationResultData): ICalculationResult => {
   return {
+    connectivityComponents: data.connectivityComponents,
     dimension: data.dimension,
     vectorElements: data.vectorElements,
     eccentricities: data.eccentricities.map(parseEccentricities)

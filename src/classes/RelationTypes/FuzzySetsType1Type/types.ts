@@ -1,9 +1,5 @@
 import { IRelation } from "../RelationType";
-
-export interface IDomain {
-  LeftBoundary: number,
-  RightBoundary: number,
-}
+import { IDomain } from "../types";
 
 export interface IFuzzySetsType1RelationAdditionalParams {
   Domain: IDomain,

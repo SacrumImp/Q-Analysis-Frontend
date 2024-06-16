@@ -12,9 +12,11 @@ import {
   RelationGraph,
 } from "../../../RelationGraph";
 import { useGraphView } from "./useGraphView";
+import { FC } from "react";
 import "./styles.scss";
+import { IGraphViewProps } from "./types";
 
-export const GraphView = observer(() => {
+export const GraphView:FC<IGraphViewProps> = observer((props) => {
 
   const {
     show,
@@ -26,6 +28,10 @@ export const GraphView = observer(() => {
     domain,
     data,
   } = useGraphView()
+
+  const { 
+    type = "trapezoid",
+  } = props
 
   return (
     <section>
@@ -44,6 +50,7 @@ export const GraphView = observer(() => {
       <RelationGraph
         domain={domain}
         data={data}
+        type={type}
       />
     </section>
   )

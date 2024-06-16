@@ -14,6 +14,10 @@ export const CustomTooltip = ({ active, payload, label }: any) => {
               className="custom-tooltip__values"
             >
               <span style={{"color": value.color}}>{`${value.name}: ${value.value === null ? "∞" : value.value}`}</span>
+              {
+                value.additionalInfo &&
+                <span className="custom-tooltip__additional-info">({value.additionalInfo})</span>
+              }
             </Text>
           ))
         }

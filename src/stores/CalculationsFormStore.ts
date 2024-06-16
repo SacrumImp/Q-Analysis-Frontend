@@ -15,6 +15,7 @@ import {
   BinaryType,
   WeightType,
   FuzzySetsType1Type,
+  FuzzySetsType2Type,
 } from "../classes";
 
 class CalculationsFormStore {
@@ -71,6 +72,9 @@ class CalculationsFormStore {
         break;
       case ERelationsTypes.fuzzySetsType1:
         this._relationsTypeProperties = new FuzzySetsType1Type()
+        break;
+      case ERelationsTypes.fuzzySetsType2:
+        this._relationsTypeProperties = new FuzzySetsType2Type()
         break;
       default:
         throw "A non-implemented method was chosen"

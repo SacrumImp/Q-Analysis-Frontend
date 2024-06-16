@@ -7,10 +7,11 @@ import {
   RelationType,
   TTrapezoid,
 } from "../classes";
+import { TTrapezoidSegments } from "../classes/RelationTypes/FuzzySetsType2Type/types";
 
 export type TColumn = ColumnDef<TRow, TData>;
 export type TRow = Array<TData>
-export type TData = boolean | number | TTrapezoid
+export type TData = boolean | number | TTrapezoid | TTrapezoidSegments
 
 export interface IExportCalculations {
   name: string,

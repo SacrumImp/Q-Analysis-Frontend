@@ -14,6 +14,7 @@ export const RelationGraph:FC<IRelationGraphProps> = observer((props) => {
 
   const {
     domain,
+    type = "trapezoid",
   } = props
 
   const {
@@ -44,6 +45,7 @@ export const RelationGraph:FC<IRelationGraphProps> = observer((props) => {
       <TrapezoidChart
         value={value}
         domain={domain}
+        type={type}
       />
     </section>
   )

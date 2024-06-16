@@ -1,11 +1,11 @@
 import { ERelationsTypes } from "../../../pages/Home/components/Content/components/RelationsTypeItem/types";
 import { RelationType } from "../RelationType";
 import {
-  IDomain,
   IFuzzySetsType1Relation,
   IFuzzySetsType1RelationAdditionalParams,
   TTrapezoid,
 } from "./types";
+import { IDomain } from "../types";
 
 export class FuzzySetsType1Type extends RelationType {
 
@@ -40,7 +40,7 @@ export class FuzzySetsType1Type extends RelationType {
 
   transformValueToString = (value: TTrapezoid): string | undefined => {
     if (value === null) return
-    return `[${value.LeftBottomPoint}, ${value.LeftTopPoint}, ${value.RightTopPoint}, ${value.RightBottomPoint}]`
+    return `[${value.LeftBottomPoint}; ${value.LeftTopPoint}; ${value.RightTopPoint}; ${value.RightBottomPoint}]`
   }
 
   getRelationWithValue = (value: TTrapezoid): IFuzzySetsType1Relation => {
@@ -79,7 +79,7 @@ export class FuzzySetsType1Type extends RelationType {
 
   transformValueFromString(value?: string | undefined): TTrapezoid | undefined {
     if (value === undefined) return
-    const points = value.replace(/[\[\]]+/g,'').split(",")
+    const points = value.replace(/[\[\]]+/g,'').split(";")
     if (points.length !== 4) return
     return {
       LeftBottomPoint: parseFloat(points[0]),
@@ -91,7 +91,7 @@ export class FuzzySetsType1Type extends RelationType {
 
   validateValue(value: any): boolean {
     if (value === undefined) return true
-    const points = value.replace(/[\[\]]+/g,'').split(",")
+    const points = value.replace(/[\[\]]+/g,'').split(";")
     if (points.length !== 4) return false
     const parsedValues = points.map((point: any) => parseFloat(point))
     if (parsedValues.some((point: any) => isNaN(point))) return false

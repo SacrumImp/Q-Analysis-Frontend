@@ -1,0 +1,27 @@
+@import "/src/variables/colors.scss";
+
+.fuzzy-sets-type2-params {
+  &__form-group {
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+  } 
+ 
+  &__domain-inputs {
+    padding-left: 20px;
+  }
+
+  &__clipping-points-badges {
+    margin-top: 8px;
+  }
+
+  &__clipping-points-badge {
+    display: inline;
+    margin-right: 8px;
+  }
+
+  &__error-text {
+    color: $error-text;
+  }
+
+}

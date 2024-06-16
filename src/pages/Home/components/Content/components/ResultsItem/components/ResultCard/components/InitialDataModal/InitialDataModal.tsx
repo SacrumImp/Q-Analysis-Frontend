@@ -16,6 +16,7 @@ import "./styles.scss";
 import { RelationGraph } from "../../../../../RelationGraph";
 import {
   IFuzzySetsType1RelationAdditionalParams,
+  IFuzzySetsType2RelationAdditionalParams,
   RelationType,
 } from "../../../../../../../../../../classes";
 import { StringConst } from "../../../../../../../../../../utils";
@@ -30,10 +31,17 @@ const getContent = (relationsTypeProperties: RelationType, columns: Array<TColum
                 data={rows}
               />
     case ERelationsTypes.fuzzySetsType1:
-      const additionalParams = relationsTypeProperties.getAdditionalParams() as IFuzzySetsType1RelationAdditionalParams
+      const additionalParamsFuzzyType1 = relationsTypeProperties.getAdditionalParams() as IFuzzySetsType1RelationAdditionalParams
       return <RelationGraph
-                domain={additionalParams.Domain}
+                domain={additionalParamsFuzzyType1.Domain}
                 data={rows}
+             />
+    case ERelationsTypes.fuzzySetsType2:
+      const additionalParamsFuzzyType2 = relationsTypeProperties.getAdditionalParams() as IFuzzySetsType2RelationAdditionalParams
+      return <RelationGraph
+                domain={additionalParamsFuzzyType2.Domain}
+                data={rows}
+                type="trapezoid-segments"
              />
     default:
       return null

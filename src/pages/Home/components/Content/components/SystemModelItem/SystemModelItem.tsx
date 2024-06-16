@@ -19,6 +19,8 @@ const getContent = (type: ERelationsTypes) => {
       return <TableView/>
     case ERelationsTypes.fuzzySetsType1:
       return <GraphView/>
+    case ERelationsTypes.fuzzySetsType2:
+      return <GraphView type="trapezoid-segments"/>
     default:
       return <DefaultView/>
   }

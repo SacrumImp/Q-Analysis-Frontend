@@ -24,6 +24,7 @@ export {
   TrapezoidChart,
   type IChartData,
   type IChartDataValue,
+  type TTrapezoidChartValueType,
 } from "./Charts";
 export { InputGroup } from "./InputGroup";
 export {

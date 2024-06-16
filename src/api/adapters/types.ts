@@ -40,12 +40,14 @@ export interface IEccentricities {
 }
 
 export interface ICalculationResultData {
+  connectivityComponents: Array<Array<Array<number>>> | null
   dimension: number,
   vectorElements: string,
   eccentricities: Array<IEccentricitiesData>,
 }
 
 export interface ICalculationResult {
+  connectivityComponents: Array<Array<Array<number>>> | null
   dimension: number,
   vectorElements: string,
   eccentricities: Array<IEccentricitiesData>,
@@ -55,6 +57,7 @@ export interface IVectorResults {
   dimension: number,
   name: string,
   vectorValues: Array<number>,
+  connectivityComponents?: Array<Array<Array<number>>>,
 }
 
 export interface IAnalysisResultKeyData {
